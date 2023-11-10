@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Provide some useful functions for strings",
   "scripts": {
-    "build": "tsc --project tsconfig.json",
+    "build": "rm -r lib/ |& tsc --project tsconfig.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -13,6 +13,7 @@
   "keywords": [
     "string"
   ],
+  "main": "src/index.js",
   "author": "benjGam",
   "license": "ISC",
   "bugs": {
