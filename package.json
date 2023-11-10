@@ -1,5 +1,5 @@
 {
-  "name": "ts-string-utils",
+  "name": "string-utils-ts",
   "version": "1.0.0",
   "description": "Provide some useful functions for strings",
   "scripts": {
