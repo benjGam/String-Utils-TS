@@ -1,4 +1,4 @@
-export class StringFormatter {
+export default class StringFormatter {
   private static pluralRefToSingular = {
     sses: 'ss',
     ies: 'y',
