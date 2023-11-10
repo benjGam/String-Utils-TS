@@ -1,9 +1,9 @@
 {
-  "name": "string-utils",
+  "name": "ts-string-utils",
   "version": "1.0.0",
   "description": "Provide some useful functions for strings",
-  "main": "index.js",
   "scripts": {
+    "build": "tsc --project tsconfig.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
