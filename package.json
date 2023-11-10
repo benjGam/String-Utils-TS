@@ -1,0 +1,27 @@
+{
+  "name": "string-utils-ts",
+  "version": "1.1.9",
+  "description": "Provide some useful functions for strings",
+  "main": "./lib",
+  "scripts": {
+    "build": "rm -r lib/ |& tsc --project tsconfig.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benjGam/String-Utils-TS.git"
+  },
+  "keywords": [
+    "string"
+  ],
+  "author": "benjGam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benjGam/String-Utils-TS/issues"
+  },
+  "homepage": "https://github.com/benjGam/String-Utils-TS#readme",
+  "devDependencies": {
+    "@types/node": "^20.9.0",
+    "typescript": "^5.2.2"
+  }
+}
