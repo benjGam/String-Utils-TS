@@ -1,0 +1,22 @@
+{
+  "name": "string-utils",
+  "version": "1.0.0",
+  "description": "Provide some useful functions for strings",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benjGam/String-Utils-TS.git"
+  },
+  "keywords": [
+    "string"
+  ],
+  "author": "benjGam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benjGam/String-Utils-TS/issues"
+  },
+  "homepage": "https://github.com/benjGam/String-Utils-TS#readme"
+}
