@@ -103,4 +103,9 @@ export default class StringFormatter {
   public static isLower(toCheck: string) {
     return toCheck == toCheck.toLowerCase();
   }
+
+  public static splitByCasing(toSplit: string) {
+    const toSplitCase = this.resolveCase(toSplit);
+    return toSplit.split(this.casingRegex[toSplitCase].split).filter((subsequent) => subsequent.length > 0);
+  }
 }
