@@ -6,6 +6,12 @@ export default class StringFormatter {
     s: '',
   };
 
+  private static casingRegex = {
+    camelCase: /^[a-z]+(?:[A-Z][a-z]+)*$/,
+    pascalCase: /^[A-Z][a-z]+(?:[A-Z][a-z]+)*$/,
+    snakeCase: /(\w+)_(\w+)/,
+  }
+
   public static pluralize(toPluralize: string) {
     if (this.isPlural(toPluralize)) return toPluralize;
 
@@ -75,5 +81,9 @@ export default class StringFormatter {
   public static removeEndDuplications(toAnalyze: string, toRemove: string) {
     const regex = new RegExp(`(${toRemove})+$`);
     return toAnalyze.replace(regex, '') + toRemove;
+  }
+
+  public static resolveCase(toResolveCasing: string) {
+    return Object.keys(this.casingRegex).find((regex) => toResolveCasing.match(this.casingRegex[regex]) != null);
   }
 }
