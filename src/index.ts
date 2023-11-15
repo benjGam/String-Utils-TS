@@ -6,6 +6,12 @@ export default class StringFormatter {
     s: '',
   };
 
+  private static casingRegex = {
+    camelCase: /^[a-z]+(?:[A-Z][a-z]+)*$/,
+    pascalCase: /^[A-Z][a-z]+(?:[A-Z][a-z]+)*$/,
+    snakeCase: /(\w+)_(\w+)/,
+  }
+
   public static pluralize(toPluralize: string) {
     if (this.isPlural(toPluralize)) return toPluralize;
 
@@ -77,24 +83,8 @@ export default class StringFormatter {
     return toAnalyze.replace(regex, '') + toRemove;
   }
 
-  public static isCamelCase(toAnalyze: string) {
-    const camelCaseRegex = new RegExp(/^[a-z]+(?:[A-Z][a-z]+)*$/);
-    return toAnalyze.match(camelCaseRegex) != null;
+  public static resolveCase(toResolveCasing: string) {
+  
   }
 
-  public static isPascalCase(toAnalyze: string) {
-    const pascalCaseRegex = new RegExp(/^[A-Z][a-z]+(?:[A-Z][a-z]+)*$/);
-    return toAnalyze.match(pascalCaseRegex) != null;
-  }
-
-  public static isSnakeCase(toAnalyze: string) {
-    const snakeCaseRegex = new RegExp(/(\w+)_(\w+)/);
-    return toAnalyze.match(snakeCaseRegex) != null;
-  }
-}
-
-export enum Casing {
-  SNAKECASE,
-  PASCALCASE,
-  CAMELCASE,
 }
