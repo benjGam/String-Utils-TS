@@ -86,4 +86,12 @@ export default class StringFormatter {
   public static resolveCase(toResolveCasing: string) {
     return Object.keys(this.casingRegex).find((regex) => toResolveCasing.match(this.casingRegex[regex]) != null);
   }
+
+  public static isUpper(toCheck: string) {
+    return toCheck == toCheck.toUpperCase();
+  }
+
+  public static isLower(toCheck: string) {
+    return toCheck == toCheck.toLowerCase();
+  }
 }
