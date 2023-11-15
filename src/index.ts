@@ -86,4 +86,9 @@ export default class StringFormatter {
     const pascalCaseRegex = new RegExp(/^[A-Z][a-z]+(?:[A-Z][a-z]+)*$/);
     return toAnalyze.match(pascalCaseRegex) != null;
   }
+
+  public static isSnakeCase(toAnalyze: string) {
+    const snakeCaseRegex = new RegExp(/(\w+)_(\w+)/);
+    return toAnalyze.match(snakeCaseRegex) != null;
+  }
 }
