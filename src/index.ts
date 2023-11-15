@@ -7,9 +7,18 @@ export default class StringFormatter {
   };
 
   private static casingRegex = {
-    camelCase: /^[a-z]+(?:[A-Z][a-z]+)*$/,
-    pascalCase: /^[A-Z][a-z]+(?:[A-Z][a-z]+)*$/,
-    snakeCase: /(\w+)_(\w+)/,
+    camelCase: {
+      matchRegex: /^[a-z]+(?:[A-Z][a-z]+)*$/,
+      split: /([A-Z]+[a-z]*)/,
+    },
+    pascalCase: {
+      matchRegex: /^[A-Z][a-z]+(?:[A-Z][a-z]+)*$/,
+      split: /([A-Z]+[a-z]*)/,
+    },
+    snakeCase: {
+      matchRegex: /(\w+)_(\w+)/,
+      split: '_',
+    },
   }
 
   public static pluralize(toPluralize: string) {
@@ -84,7 +93,7 @@ export default class StringFormatter {
   }
 
   public static resolveCase(toResolveCasing: string) {
-    return Object.keys(this.casingRegex).find((regex) => toResolveCasing.match(this.casingRegex[regex]) != null);
+    return Object.keys(this.casingRegex).find((regex) => toResolveCasing.match(this.casingRegex[regex].matchRegex) != null);
   }
 
   public static isUpper(toCheck: string) {
