@@ -6,6 +6,21 @@ export default class StringFormatter {
     s: '',
   };
 
+  private static casingRegex = {
+    camelCase: {
+      matchRegex: /^[a-z]+(?:[A-Z][a-z]+)*$/,
+      split: /([A-Z]+[a-z]*)/,
+    },
+    pascalCase: {
+      matchRegex: /^[A-Z][a-z]+(?:[A-Z][a-z]+)*$/,
+      split: /([A-Z]+[a-z]*)/,
+    },
+    snakeCase: {
+      matchRegex: /(\w+)_(\w+)/,
+      split: '_',
+    },
+  }
+
   public static pluralize(toPluralize: string) {
     if (this.isPlural(toPluralize)) return toPluralize;
 
@@ -75,5 +90,22 @@ export default class StringFormatter {
   public static removeEndDuplications(toAnalyze: string, toRemove: string) {
     const regex = new RegExp(`(${toRemove})+$`);
     return toAnalyze.replace(regex, '') + toRemove;
+  }
+
+  public static resolveCase(toResolveCasing: string) {
+    return Object.keys(this.casingRegex).find((regex) => toResolveCasing.match(this.casingRegex[regex].matchRegex) != null);
+  }
+
+  public static isUpper(toCheck: string) {
+    return toCheck == toCheck.toUpperCase();
+  }
+
+  public static isLower(toCheck: string) {
+    return toCheck == toCheck.toLowerCase();
+  }
+
+  public static splitByCasing(toSplit: string) {
+    const toSplitCase = this.resolveCase(toSplit);
+    return toSplit.split(this.casingRegex[toSplitCase].split).filter((subsequent) => subsequent.length > 0);
   }
 }
