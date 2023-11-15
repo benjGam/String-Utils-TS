@@ -76,4 +76,9 @@ export default class StringFormatter {
     const regex = new RegExp(`(${toRemove})+$`);
     return toAnalyze.replace(regex, '') + toRemove;
   }
+
+  public static isCamelCase(toAnalyze: string) {
+    const camelCaseRegex = new RegExp(/^[a-z]+(?:[A-Z][a-z]+)*$/);
+    return toAnalyze.match(camelCaseRegex) != null;
+  }
 }
