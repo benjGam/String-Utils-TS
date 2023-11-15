@@ -81,4 +81,9 @@ export default class StringFormatter {
     const camelCaseRegex = new RegExp(/^[a-z]+(?:[A-Z][a-z]+)*$/);
     return toAnalyze.match(camelCaseRegex) != null;
   }
+
+  public static isPascalCase(toAnalyze: string) {
+    const pascalCaseRegex = new RegExp(/^[A-Z][a-z]+(?:[A-Z][a-z]+)*$/);
+    return toAnalyze.match(pascalCaseRegex) != null;
+  }
 }
