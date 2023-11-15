@@ -92,3 +92,9 @@ export default class StringFormatter {
     return toAnalyze.match(snakeCaseRegex) != null;
   }
 }
+
+export enum Casing {
+  SNAKECASE,
+  PASCALCASE,
+  CAMELCASE,
+}
