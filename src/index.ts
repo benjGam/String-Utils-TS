@@ -84,6 +84,6 @@ export default class StringFormatter {
   }
 
   public static resolveCase(toResolveCasing: string) {
-    return Object.keys((casingRegex) => toResolveCasing.match(casingRegex) != null);
+    return Object.keys(this.casingRegex).find((casingRegex) => toResolveCasing.match(casingRegex) != null);
   }
 }
