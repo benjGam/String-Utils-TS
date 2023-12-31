@@ -1,3 +1,9 @@
+enum Casing {
+  "camelCase",
+  "PascalCase",
+  "snake_case"
+}
+
 export default class StringFormatter {
   private static pluralRefToSingular = {
     sses: 'ss',
@@ -93,7 +99,7 @@ export default class StringFormatter {
   }
 
   public static resolveCase(toResolveCasing: string) {
-    return Object.keys(this.casingRegex).find((regex) => toResolveCasing.match(this.casingRegex[regex].matchRegex) != null);
+    return Object.keys(this.casingRegex).find((regex) => toResolveCasing.match(this.casingRegex[regex].matchRegex));
   }
 
   public static isUpper(toCheck: string) {
@@ -107,5 +113,17 @@ export default class StringFormatter {
   public static splitByCasing(toSplit: string) {
     const toSplitCase = this.resolveCase(toSplit);
     return toSplit.split(this.casingRegex[toSplitCase].split).filter((subsequent) => subsequent.length > 0);
+  }
+
+  public static convertToCasing(toConvert: string, casingToApply: Casing) {
+    const splittedToConvert = this.splitByCasing(toConvert);
+    switch (casingToApply) {
+      case Casing.camelCase: 
+        return `${splittedToConvert.pop().toLowerCase()}`.concat(this.formatEachWords(splittedToConvert.join()));
+      case Casing.PascalCase:
+        return this.formatEachWords(toConvert);
+      case Casing.snake_case:
+        return `${splittedToConvert.map((word: string) => word.toLowerCase()).join('_')}`;
+    }
   }
 }
