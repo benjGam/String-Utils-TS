@@ -112,7 +112,7 @@ export class StringFormatter {
 
   public static splitByCasing(toSplit: string) {
     const toSplitCase = this.resolveCase(toSplit);
-    return toSplit.split(this.casingRegex[toSplitCase].split).filter((subsequent) => subsequent.length > 0);
+    return toSplitCase ? toSplit.split(this.casingRegex[toSplitCase].split).filter((subsequent) => subsequent.length > 0) : [toSplit];
   }
 
   public static convertToCasing(toConvert: string[], casingToApply: Casing) {
