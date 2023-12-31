@@ -93,7 +93,7 @@ export default class StringFormatter {
   }
 
   public static resolveCase(toResolveCasing: string) {
-    return Object.keys(this.casingRegex).find((regex) => toResolveCasing.match(this.casingRegex[regex].matchRegex) != null);
+    return Object.keys(this.casingRegex).find((regex) => toResolveCasing.match(this.casingRegex[regex].matchRegex));
   }
 
   public static isUpper(toCheck: string) {
