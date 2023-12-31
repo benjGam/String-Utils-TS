@@ -1,10 +1,10 @@
-enum Casing {
+export enum Casing {
   "camelCase",
   "PascalCase",
   "snake_case"
 }
 
-export default class StringFormatter {
+export class StringFormatter {
   private static pluralRefToSingular = {
     sses: 'ss',
     ies: 'y',
