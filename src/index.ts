@@ -115,15 +115,15 @@ export class StringFormatter {
     return toSplit.split(this.casingRegex[toSplitCase].split).filter((subsequent) => subsequent.length > 0);
   }
 
-  public static convertToCasing(toConvert: string, casingToApply: Casing) {
-    const splittedToConvert = this.splitByCasing(toConvert);
+  public static convertToCasing(toConvert: string[], casingToApply: Casing) {
+    const splittedToConvert = toConvert.map((toConvert: string) => this.splitByCasing(toConvert));
     switch (casingToApply) {
       case Casing.camelCase: 
-        return `${splittedToConvert.pop().toLowerCase()}`.concat(this.formatEachWords(splittedToConvert.join()));
+        return splittedToConvert.map((table: string[]) => table.map((word: string, index: number) => index == 0 ? word.toLowerCase() : this.formatWord(word)).join(''));;
       case Casing.PascalCase:
-        return this.formatEachWords(toConvert);
+        return splittedToConvert.map((table: string[]) => table.map((word: string) => this.formatWord(word)).join(''));
       case Casing.snake_case:
-        return `${splittedToConvert.map((word: string) => word.toLowerCase()).join('_')}`;
+        return splittedToConvert.map((table: string[]) => table.map((word: string) => word.toLowerCase()).join('_'))
     }
   }
 }
