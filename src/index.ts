@@ -126,4 +126,15 @@ export class StringFormatter {
         return splittedToConvert.map((table: string[]) => table.map((word: string) => word.toLowerCase()).join('_'))
     }
   }
+
+  /**
+   * This method will return a string with only one space between each term
+   * "This    is   a test" -> "This is a test"
+   */
+  public static normalizeSpaces(toClean: string) {
+    return toClean
+    .split(' ')
+    .filter((value) => value != ' ' && value != '')
+    .join(' ');
+  }
 }
