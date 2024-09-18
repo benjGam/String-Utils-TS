@@ -115,15 +115,15 @@ export class StringFormatter {
     return toSplitCase ? toSplit.split(this.casingRegex[toSplitCase].split).filter((subsequent) => subsequent.length > 0) : [toSplit];
   }
 
-  public static convertToCasing(toConvert: string[], casingToApply: Casing) {
-    const splittedToConvert = toConvert.map((toConvert: string) => this.splitByCasing(toConvert));
-    switch (casingToApply) {
-      case Casing.camelCase: 
-        return splittedToConvert.map((table: string[]) => table.map((word: string, index: number) => index == 0 ? word.toLowerCase() : this.formatWord(word)).join(''));;
+  public static convertToCasing(toConvert: string | string[], casingToApply: Casing) {
+    const splittedByCasing = !Array.isArray(toConvert) ? this.splitByCasing(toConvert) : toConvert;
+    switch(casingToApply) {
+      case Casing.camelCase:
+        return splittedByCasing.map((word, index) => index == 0 ? word.toLowerCase() : this.formatWord(word)).join("");
       case Casing.PascalCase:
-        return splittedToConvert.map((table: string[]) => table.map((word: string) => this.formatWord(word)).join(''));
+        return splittedByCasing.map((word) => this.formatWord(word)).join('');
       case Casing.snake_case:
-        return splittedToConvert.map((table: string[]) => table.map((word: string) => word.toLowerCase()).join('_'))
+        return splittedByCasing.map((word) => word.toLowerCase()).join(`_`);
     }
   }
 
