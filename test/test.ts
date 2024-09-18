@@ -22,8 +22,8 @@ describe("Casing functions test", () => {
     expect(StringFormatter.splitByCasing("HeyYouAreMyFriend")).toEqual(["Hey", "You", "Are", "My", "Friend"]);
   });
 
-  test('Should be equal to "helloYouAreYouMyFriend"', () => {
-    expect(StringFormatter.convertToCasing("helloYouAreYouMyFriend", Casing.snake_case));
+  test('Should be equal to "helloYouAreMyFriend"', () => {
+    expect(StringFormatter.convertToCasing("helloYouAreMyFriend", Casing.snake_case)).toEqual("hello_you_are_my_friend");
   });
 
 });
