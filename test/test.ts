@@ -18,4 +18,8 @@ describe("Casing functions test", () => {
     expect(StringFormatter.resolveCase("my_test_is_better")).toBe("snakeCase");
   });
 
+  test('Should be equal to "[Hey, You, Are, My, Friend]', () => {
+    expect(StringFormatter.splitByCasing("HeyYouAreMyFriend")).toEqual(["Hey", "You", "Are", "My", "Friend"]);
+  });
+
 });
