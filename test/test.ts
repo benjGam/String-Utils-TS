@@ -10,4 +10,8 @@ describe("Casing functions test", () => {
     expect(StringFormatter.resolveCase("myTestIsBetter")).toBe("camelCase");
   })
 
+  test('Should be equal to "PascalCase"', () => {
+    expect(StringFormatter.resolveCase("MyTestIsBetter")).toBe("pascalCase");
+  })
+
 });
