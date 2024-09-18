@@ -26,4 +26,16 @@ describe("Casing functions test", () => {
     expect(StringFormatter.convertToCasing("helloYouAreMyFriend", Casing.snake_case)).toEqual("hello_you_are_my_friend");
   });
 
+  test('Should be equal to "helloYouAreMyFriend"', () => {
+    expect(StringFormatter.convertToCasing(["hello", "you", "are", "my", "friend"], Casing.snake_case)).toEqual("hello_you_are_my_friend");
+  });
+
+  test('Should be equal to "HelloYouAreMyFriend"', () => {
+    expect(StringFormatter.convertToCasing(["hello", "you", "are", "my", "friend"], Casing.PascalCase)).toEqual("HelloYouAreMyFriend");
+  });
+
+  test('Should be equal to "HelloYouAreMyFriend"', () => {
+    expect(StringFormatter.convertToCasing("hello_you_are_my_friend", Casing.PascalCase)).toEqual("HelloYouAreMyFriend");
+  });
+
 });
