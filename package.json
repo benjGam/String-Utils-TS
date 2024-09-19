@@ -1,6 +1,6 @@
 {
   "name": "string-utils-ts",
-  "version": "1.5.0",
+  "version": "2.0.0",
   "description": "Provide some useful functions for strings",
   "main": "./lib",
   "scripts": {
