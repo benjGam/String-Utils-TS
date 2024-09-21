@@ -6,7 +6,7 @@ export class StringUtils {
    *
    * @param str - The string to test to determine case
    *
-   * @returns The case of parameter (ICase type)
+   * @returns {ICase} - The case of given string
    */
   public static determineCase(str: string): ICase | undefined {
     return knownCases.find((caseObject) => str.match(caseObject.matcher));
@@ -29,7 +29,7 @@ export class StringUtils {
    * str: This is a test
    * returns: ['This is a test']
    * ```
-   * @returns A table of sub strings
+   * @returns {string[]}
    */
   public static splitByCase(str: string): string[] {
     return [str];
@@ -39,9 +39,8 @@ export class StringUtils {
    * Check if a given string is blank or not
    *
    * @param str
-   * @returns true if given string only contains spaces or nothing, false otherwise
+   * @returns {boolean}
    */
-
   public static isBlank(str: string): boolean {
     return str.trim().replaceAll(' ', '').length == 0;
   }
