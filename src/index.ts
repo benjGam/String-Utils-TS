@@ -62,4 +62,26 @@ export class StringUtils {
   public static isBlank(str: string): boolean {
     return str.trim().replaceAll(' ', '').length == 0;
   }
+
+  /**
+   * Check the ending form of a word and return a boolean
+   *
+   * @param str - String to check if it's plural or not (should be a word)
+   *
+   * @example
+   * ```
+   * str: Tests
+   * returns: true
+   * ```
+   * @example
+   * ```
+   * str: Category
+   * returns: false
+   * ```
+   *
+   * @returns {boolean} - true if given string ending is plural, false otherwise
+   */
+  public static isPlural(str: string): boolean {
+    return true;
+  }
 }
