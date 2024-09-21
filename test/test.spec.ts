@@ -27,7 +27,7 @@ describe('Casing operation', () => {
   }
 });
 
-describe('Extensions testing', () => {
+describe('Non related features', () => {
   const isBlankExpectedReturns = new Map<string, boolean>([
     ['hey', false],
     ['  hey  ', false],
