@@ -1,6 +1,6 @@
 import { StringUtils } from '../src';
 
-describe('Determine case of given string.', () => {
+describe('Casing operation', () => {
   const samples = new Map<string, string>([
     ['camelCase', 'thisIsMyTest'],
     ['pascalCase', 'ThisIsMyTest'],
@@ -10,6 +10,18 @@ describe('Determine case of given string.', () => {
   for (const key of samples.keys()) {
     test(`Should return '${key}'`, () => {
       expect(StringUtils.determineCase(samples.get(key)!)?.name).toBe(key);
+    });
+  }
+
+  const splittedByCase = new Map<string, string[]>([
+    ['thisIsMyTest', ['this', 'Is', 'My', 'Test']],
+    ['ThisIsMyTest', ['This', 'Is', 'My', 'Test']],
+    ['this_is_my_test', ['this', 'is', 'my', 'test']],
+  ]);
+
+  for (const key of splittedByCase.keys()) {
+    test(`Should return '${splittedByCase.get(key)!.toString()}'`, () => {
+      expect(StringUtils.splitByCase(key)).toBe(splittedByCase.get(key)!);
     });
   }
 });
