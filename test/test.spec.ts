@@ -17,6 +17,7 @@ describe('Casing operation', () => {
     ['thisIsMyTest', ['this', 'Is', 'My', 'Test']],
     ['ThisIsMyTest', ['This', 'Is', 'My', 'Test']],
     ['this_is_my_test', ['this', 'is', 'my', 'test']],
+    ['This is my test', ['This is my test']],
   ]);
 
   for (const key of splittedByCase.keys()) {
