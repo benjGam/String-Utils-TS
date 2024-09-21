@@ -2,9 +2,9 @@ import { StringUtils } from '../src';
 
 describe('Determine case of given string.', () => {
   const samples = new Map<string, string>([
-    ['camelCase', 'thisIsATest'],
-    ['pascalCase', 'ThisIsATest'],
-    ['snakeCase', 'this_is_a_test'],
+    ['camelCase', 'thisIsMyTest'],
+    ['pascalCase', 'ThisIsMyTest'],
+    ['snakeCase', 'this_is_my_test'],
   ]);
 
   for (const key of samples.keys()) {
