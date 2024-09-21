@@ -2,6 +2,18 @@ import { ICase, knownCases } from './case';
 
 export class StringUtils {
   /**
+   * This object is used to list plural and singular forms
+   * of words. It's used to do some operations on given
+   * words.
+   */
+  private static wordPluralAndSingularEndingFormsObject = {
+    sses: 'ss',
+    ies: 'y',
+    es: 'e',
+    s: '',
+  };
+
+  /**
    * Returns the case with which parameters was written.
    *
    * @param str - The string to test to determine case
