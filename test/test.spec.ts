@@ -9,7 +9,7 @@ describe('Determine case of given string.', () => {
 
   for (const key of samples.keys()) {
     test(`Should return '${key}'`, () => {
-      expect(StringUtils.determineCase(samples.get(key))).toBe(key);
+      expect(StringUtils.determineCase(samples.get(key)!)).toBe(key);
     });
   }
 });
