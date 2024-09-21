@@ -14,6 +14,11 @@ export interface ICase {
   splitter: RegExp | string;
 }
 
+/**
+ * This table store few basics cases.
+ *
+ * @method StringUtils.determineCase <- Use it
+ */
 export const knownCases: ICase[] = [
   {
     name: 'snakeCase',
