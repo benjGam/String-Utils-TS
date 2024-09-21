@@ -11,4 +11,15 @@ export class StringUtils {
   public static determineCase(str: string): string | undefined {
     return knownCases.find((caseObject) => str.match(caseObject.matcher)).name;
   }
+
+  /**
+   * Check if a given string is blank or not
+   *
+   * @param str
+   * @returns true if given string only contains spaces or nothing, false otherwise
+   */
+
+  public static isBlank(str: string): boolean {
+    return str.trim().replaceAll(' ', '').length == 0;
+  }
 }
