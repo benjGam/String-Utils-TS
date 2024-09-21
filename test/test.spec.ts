@@ -28,19 +28,18 @@ describe('Casing operation', () => {
 });
 
 describe('Extensions testing', () => {
-  test('Should return "true" for "" string', () => {
-    expect(StringUtils.isBlank('')).toBe(true);
-  });
+  const isBlankExpectedReturns = new Map<string, boolean>([
+    ['hey', false],
+    ['  hey  ', false],
+    ['     ', true],
+    ['', true],
+  ]);
 
-  test('Should return "false" for "hey" string', () => {
-    expect(StringUtils.isBlank('hey')).toBe(false);
-  });
-
-  test('Should return "false" for "  hey  " string', () => {
-    expect(StringUtils.isBlank('  hey  ')).toBe(false);
-  });
-
-  test('Should return "true" for "   " string', () => {
-    expect(StringUtils.isBlank('   ')).toBe(true);
-  });
+  for (const strKey of isBlankExpectedReturns.keys()) {
+    test(`Should return '${isBlankExpectedReturns.get(strKey)!}' for str = ${strKey}`, () => {
+      expect(StringUtils.isBlank(strKey)).toBe(
+        isBlankExpectedReturns.get(strKey)!,
+      );
+    });
+  }
 });
