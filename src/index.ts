@@ -1,4 +1,4 @@
-import { knownCases } from './case';
+import { ICase, knownCases } from './case';
 
 export class StringUtils {
   /**
@@ -6,10 +6,10 @@ export class StringUtils {
    *
    * @param str - The string to test to determine case
    *
-   * @returns The case of parameter
+   * @returns The case of parameter (ICase type)
    */
-  public static determineCase(str: string): string | undefined {
-    return knownCases.find((caseObject) => str.match(caseObject.matcher)).name;
+  public static determineCase(str: string): ICase | undefined {
+    return knownCases.find((caseObject) => str.match(caseObject.matcher));
   }
 
   /**
@@ -31,7 +31,6 @@ export class StringUtils {
    * ```
    * @returns A table of sub strings
    */
-
   public static splitByCase(str: string): string[] {
     return [str];
   }
