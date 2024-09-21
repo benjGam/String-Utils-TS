@@ -52,6 +52,21 @@ export class StringUtils {
   }
 
   /**
+   * Returns corresponding ending, if it's ending stored in 'wordEndings' table
+   *
+   * @param word - Should be a word
+   * @example
+   * word: 'Passes'
+   * returns: 'es'
+   * @example
+   * word: 'Pass'
+   * returns: 's'
+   */
+  public static getWordEnding(word: string): string {
+    return '';
+  }
+
+  /**
    * Check the ending form of a word and return a boolean
    *
    * @param str - String to check if it's plural or not (should be a word)
