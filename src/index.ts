@@ -75,6 +75,10 @@ export class StringUtils {
    * @returns {boolean} - true if given string ending is plural, false otherwise
    */
   public static isPlural(str: string): boolean {
-    return true;
+    return (
+      !!wordEndings
+        .map((ending) => ending.pluralForm)
+        .find((ending) => str.endsWith(ending)) && !str.endsWith('ss')
+    );
   }
 }
