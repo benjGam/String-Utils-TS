@@ -1,4 +1,5 @@
 import { ICase, knownCases } from './case';
+import { unorderedWordEndings, wordEndings } from './word-ending-utils';
 
 export class StringUtils {
   /**
@@ -63,7 +64,7 @@ export class StringUtils {
    * returns: 's'
    */
   public static getWordEnding(word: string): string {
-    return '';
+    return unorderedWordEndings.find((ending) => word.endsWith(ending));
   }
 
   /**
