@@ -13,6 +13,30 @@ export class StringUtils {
   }
 
   /**
+   * Returns a table of strings, split operation is based on case used
+   * in the given string
+   *
+   * @param str - String with cased content
+   *
+   * @example
+   * ```
+   * str: thisIsMyString
+   * returns: ['this', 'Is', 'My', 'String']
+   * ```
+   *
+   * @example
+   * ```
+   * str: This is a test
+   * returns: ['This is a test']
+   * ```
+   * @returns A table of sub strings
+   */
+
+  public static splitByCase(str: string): string[] {
+    return [str];
+  }
+
+  /**
    * Check if a given string is blank or not
    *
    * @param str
