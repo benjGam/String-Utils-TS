@@ -36,7 +36,7 @@ describe('Non related features', () => {
   ]);
 
   for (const strKey of isBlankExpectedReturns.keys()) {
-    test(`Should return '${isBlankExpectedReturns.get(strKey)!}' for str = ${strKey}`, () => {
+    test(`Should return '${isBlankExpectedReturns.get(strKey)!}' for str = '${strKey}'`, () => {
       expect(StringUtils.isBlank(strKey)).toBe(
         isBlankExpectedReturns.get(strKey)!,
       );
