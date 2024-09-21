@@ -20,8 +20,8 @@ describe('Casing operation', () => {
   ]);
 
   for (const key of splittedByCase.keys()) {
-    test(`Should return '${splittedByCase.get(key)!.toString()}'`, () => {
-      expect(StringUtils.splitByCase(key)).toBe(splittedByCase.get(key)!);
+    test(`Should return '[${splittedByCase.get(key)!.toString()}]'`, () => {
+      expect(StringUtils.splitByCase(key)).toEqual(splittedByCase.get(key)!);
     });
   }
 });
