@@ -5,7 +5,7 @@ export class StringUtils {
   /**
    * Returns the case with which parameters was written.
    *
-   * @param str - The string to test to determine case
+   * @param {string} str - The string to test to determine case
    *
    * @returns {ICase} - The case of given string
    */
@@ -17,19 +17,14 @@ export class StringUtils {
    * Returns a table of strings, split operation is based on case used
    * in the given string
    *
-   * @param str - String with cased content
+   * @param {string} str - String with cased content
    *
    * @example
-   * ```
    * str: thisIsMyString
    * returns: ['this', 'Is', 'My', 'String']
-   * ```
-   *
    * @example
-   * ```
    * str: This is a test
    * returns: ['This is a test']
-   * ```
    * @returns {string[]}
    */
   public static splitByCase(str: string): string[] {
@@ -45,7 +40,7 @@ export class StringUtils {
   /**
    * Check if a given string is blank or not
    *
-   * @param str
+   * @param {string} str - To check if it's blank
    * @returns {boolean}
    */
   public static isBlank(str: string): boolean {
@@ -55,7 +50,7 @@ export class StringUtils {
   /**
    * Returns corresponding ending, if it's ending stored in 'wordEndings' table
    *
-   * @param word - Should be a word
+   * @param {string} word - Should be a word
    * @example
    * word: 'Passes'
    * returns: 'es'
@@ -70,19 +65,13 @@ export class StringUtils {
   /**
    * Check the ending form of a word and return a boolean
    *
-   * @param str - String to check if it's plural or not (should be a word)
-   *
+   * @param {string} str - String to check if it's plural or not (should be a word)
    * @example
-   * ```
    * str: Tests
    * returns: true
-   * ```
    * @example
-   * ```
    * str: Category
    * returns: false
-   * ```
-   *
    * @returns {boolean} - true if given string ending is plural, false otherwise
    */
   public static isPlural(str: string): boolean {

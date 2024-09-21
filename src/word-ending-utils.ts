@@ -6,10 +6,8 @@
  * @field {string} singularForm is used to store the singular form of the plural form ending
  *
  * @example
- * ```
  * pluralForm: 'ies'
  * singularForm: 'y'
- * ```
  */
 export interface IWordEnding {
   pluralForm: string;
@@ -41,6 +39,9 @@ export const wordEndings: IWordEnding[] = [
 
 /**
  * This object is used to concat endings to avoid logic overload
+ *
+ * Used in:
+ * @method StringUtils.getWordEnding()
  */
 export const unorderedWordEndings: string[] = wordEndings.flatMap((ending) => [
   ending.pluralForm,
