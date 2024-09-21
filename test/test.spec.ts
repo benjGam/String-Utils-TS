@@ -48,6 +48,19 @@ describe('Plural and Singular operations', () => {
       expect(StringUtils.isPlural(key)).toBe(isPluralReturns.get(key)!);
     });
   }
+
+  const isSingularReturns = new Map<string, boolean>(
+    Array.from(isPluralReturns.keys()).map((key) => [
+      key,
+      !isPluralReturns.get(key),
+    ]),
+  );
+
+  for (const key of isSingularReturns.keys()) {
+    test(`Should return '${isSingularReturns.get(key)!}' for word = '${key}'`, () => {
+      expect(StringUtils.isSingular(key)).toBe(isSingularReturns.get(key)!);
+    });
+  }
 });
 
 // Non related features
