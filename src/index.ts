@@ -67,6 +67,15 @@ export class StringUtils {
   }
 
   /**
+   * Returns the complete IWordEnding object corresponding
+   *
+   * @param {string} word - Should be a word
+   */
+  public static getCorrespondingEnding(word: string): IWordEnding {
+    return null;
+  }
+
+  /**
    * Check the ending form of a word and return a boolean
    *
    * @param {string} str - String to check if it's plural or not (should be a word)
