@@ -5,7 +5,8 @@
   "main": "./lib",
   "scripts": {
     "build": "rm -r lib/ |& tsc --project tsconfig.json",
-    "test": "jest"
+    "test": "jest",
+    "coverage": "c8 --check-coverage jest"
   },
   "repository": {
     "type": "git",
