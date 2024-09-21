@@ -1,5 +1,7 @@
 import { StringUtils } from '../src';
 
+// Casing
+
 describe('Casing operation', () => {
   const samples = new Map<string, string>([
     ['camelCase', 'thisIsMyTest'],
@@ -26,6 +28,29 @@ describe('Casing operation', () => {
     });
   }
 });
+
+// Plural and Singular features
+
+describe('Plural and Singular operations', () => {
+  const isPluralReturns = new Map<string, boolean>([
+    ['Pass', false],
+    ['Passes', true],
+    ['Category', false],
+    ['Categories', true],
+    ['Bees', true],
+    ['Bee', false],
+    ['Cars', true],
+    ['Bet', false],
+  ]);
+
+  for (const key of isPluralReturns.keys()) {
+    test(`Should return '${isPluralReturns.get(key)!}' for word = '${key}'`, () => {
+      expect(key).toBe(isPluralReturns.get(key)!);
+    });
+  }
+});
+
+// Non related features
 
 describe('Non related features', () => {
   const isBlankExpectedReturns = new Map<string, boolean>([
