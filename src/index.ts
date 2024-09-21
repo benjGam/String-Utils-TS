@@ -1,5 +1,9 @@
 import { ICase, knownCases } from './case';
-import { unorderedWordEndings, wordEndings } from './word-ending-utils';
+import {
+  IWordEnding,
+  unorderedWordEndings,
+  wordEndings,
+} from './word-ending-utils';
 
 export class StringUtils {
   /**
@@ -48,7 +52,7 @@ export class StringUtils {
   }
 
   /**
-   * Returns corresponding ending, if it's ending stored in 'wordEndings' table
+   * Returns corresponding ending, if it's ending stored in 'unorderedWordEndings' table
    *
    * @param {string} word - Should be a word
    * @example
@@ -60,6 +64,14 @@ export class StringUtils {
    */
   public static getWordEnding(word: string): string {
     return unorderedWordEndings.find((ending) => word.endsWith(ending));
+  }
+
+  /**
+   * Returns corresponding ending, if ending is stored in 'wordEndings' table
+   * @param {string} word - Should be a word
+   */
+  private static getCorrespondingEnding(word: string): IWordEnding {
+    return null;
   }
 
   /**
