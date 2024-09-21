@@ -1,9 +1,3 @@
-export enum Case {
-  CAMEL_CASE = 'camelCase',
-  PASCAL_CASE = 'PascalCase',
-  SNAKE_CASE = 'snake_case',
-}
-
 export class StringUtils {
   /**
    * Returns the case with which parameters was written.
@@ -12,7 +6,7 @@ export class StringUtils {
    *
    * @returns The case of parameter
    */
-  public static determineCase(str: string): Case | undefined {
+  public static determineCase(str: string): undefined {
     return undefined;
   }
 }
