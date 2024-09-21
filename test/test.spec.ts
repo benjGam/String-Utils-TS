@@ -51,6 +51,7 @@ describe('Non related features', () => {
     ['Bees', 'es'],
     ['Bee', 'e'],
     ['Cars', 's'],
+    ['Bet', ''],
   ]);
 
   for (const key of getWordEndingReturns.keys()) {
