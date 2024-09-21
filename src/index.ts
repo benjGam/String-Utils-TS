@@ -32,7 +32,13 @@ export class StringUtils {
    * @returns {string[]}
    */
   public static splitByCase(str: string): string[] {
-    return [str];
+    const caseOfString = this.determineCase(str);
+
+    if (!caseOfString) return [str];
+
+    return str
+      .split(caseOfString.splitter)
+      .filter((subSequence) => !this.isBlank(subSequence));
   }
 
   /**
