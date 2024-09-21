@@ -76,9 +76,8 @@ export class StringUtils {
    */
   public static isPlural(str: string): boolean {
     return (
-      !!wordEndings
-        .map((ending) => ending.pluralForm)
-        .find((ending) => str.endsWith(ending)) && !str.endsWith('ss')
+      !!wordEndings.find((ending) => str.endsWith(ending.pluralForm)) &&
+      !str.endsWith('ss')
     );
   }
 
