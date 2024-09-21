@@ -14,6 +14,14 @@ export class StringUtils {
   };
 
   /**
+   * This object is used to avoid concat operation
+   * to optimize performance
+   */
+  private static completePluralAndSingularEndingFormsTable = Object.keys(
+    this.wordPluralAndSingularEndingFormsObject,
+  ).concat(Object.values(this.wordPluralAndSingularEndingFormsObject));
+
+  /**
    * Returns the case with which parameters was written.
    *
    * @param str - The string to test to determine case
