@@ -42,4 +42,22 @@ describe('Non related features', () => {
       );
     });
   }
+
+  const getWordEndingReturns = new Map<string, string>([
+    ['Pass', 'ss'],
+    ['Passes', 'sses'],
+    ['Category', 'y'],
+    ['Categories', 'ies'],
+    ['Bees', 'es'],
+    ['Bee', 'e'],
+    ['Cars', 's'],
+  ]);
+
+  for (const key of getWordEndingReturns.keys()) {
+    test(`Should return '${getWordEndingReturns.get(key)!}' for word = '${key}'`, () => {
+      expect(StringUtils.getWordEnding(key)).toEqual(
+        getWordEndingReturns.get(key)!,
+      );
+    });
+  }
 });
