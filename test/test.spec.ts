@@ -45,7 +45,7 @@ describe('Plural and Singular operations', () => {
 
   for (const key of isPluralReturns.keys()) {
     test(`Should return '${isPluralReturns.get(key)!}' for word = '${key}'`, () => {
-      expect(key).toBe(isPluralReturns.get(key)!);
+      expect(StringUtils.isPlural(key)).toBe(isPluralReturns.get(key)!);
     });
   }
 });
