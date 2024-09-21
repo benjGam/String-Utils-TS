@@ -42,6 +42,7 @@ export const wordEndings: IWordEnding[] = [
 /**
  * This object is used to concat endings to avoid logic overload
  */
-export const unorderedWordEndings: string[] = wordEndings
-  .map((ending) => [ending.pluralForm, ending.singularForm])
-  .flat();
+export const unorderedWordEndings: string[] = wordEndings.flatMap((ending) => [
+  ending.pluralForm,
+  ending.singularForm,
+]);
