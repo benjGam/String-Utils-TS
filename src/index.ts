@@ -96,4 +96,16 @@ export class StringUtils {
   public static isSingular(str: string): boolean {
     return !this.isPlural(str); //Should work fine :x (I'm factually right.)
   }
+
+  /**
+   * Return pluralized version of the given word
+   *
+   * @param {string} word - Should be a word
+   * @example
+   * word: Pass
+   * returns: Passes
+   */
+  public static pluralize(word: string): string {
+    return '';
+  }
 }
