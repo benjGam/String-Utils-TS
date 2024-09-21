@@ -13,3 +13,21 @@ describe('Determine case of given string.', () => {
     });
   }
 });
+
+describe('Extensions testing', () => {
+  test('Should return "true" for "" string', () => {
+    expect(StringUtils.isBlank('')).toBe(true);
+  });
+
+  test('Should return "false" for "hey" string', () => {
+    expect(StringUtils.isBlank('hey')).toBe(false);
+  });
+
+  test('Should return "false" for "  hey  " string', () => {
+    expect(StringUtils.isBlank('  hey  ')).toBe(false);
+  });
+
+  test('Should return "true" for "   " string', () => {
+    expect(StringUtils.isBlank('   ')).toBe(true);
+  });
+});
