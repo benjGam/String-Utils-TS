@@ -81,4 +81,20 @@ export class StringUtils {
         .find((ending) => str.endsWith(ending)) && !str.endsWith('ss')
     );
   }
+
+  /**
+   * Check the ending form of a word and return a boolean
+   *
+   * @param {string} str - String to check if it's singular or not (should be a word)
+   * @example
+   * str: Test
+   * returns: true
+   * @example
+   * str: Categories
+   * returns: false
+   * @returns {boolean} - true if given string ending is singular, false otherwise
+   */
+  public static isSingular(str: string): boolean {
+    return !this.isPlural(str); //Should work fine :x (I'm factually right.)
+  }
 }
