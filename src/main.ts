@@ -30,4 +30,25 @@ export class StringUtils {
   public static isLower(str: string): boolean {
     return !this.isBlank(str) && str.toLowerCase() == str;
   }
+
+  /**
+   * Replace a subsequent string at a given position by another string in a given string
+   *
+   * @param {string} str - The string to replace in
+   * @param {number} index - Should be included between 0 & str length
+   * @param {string} toReplaceWith - The string to replace at
+   *
+   * @example
+   * str: 'Test'
+   * index: '2'
+   * toReplaceWith: 'hello'
+   * returns: 'Tehellost'
+   */
+  public static replaceAt(
+    str: string,
+    index: number,
+    toReplaceWith: string,
+  ): string {
+    return '';
+  }
 }
