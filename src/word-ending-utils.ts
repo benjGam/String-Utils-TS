@@ -1,3 +1,5 @@
+import { StringUtils } from './main';
+
 /**
  * This interface provide a structure to register word endings forms
  *
@@ -168,6 +170,10 @@ export default class StringUtilsWord {
    * returns: Test
    */
   public static formatWord(word: string): string {
-    return '';
+    if (StringUtils.isBlank(word)) return word;
+
+    const firstCharIndex = Array.from(word).findIndex((char) => char != ' ');
+
+    return `${word.substring(0, firstCharIndex)}${word[firstCharIndex].toUpperCase()}${word.substring(firstCharIndex + 1, word.length)}`;
   }
 }
