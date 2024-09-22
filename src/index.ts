@@ -1,10 +1,3 @@
-import { ICase, knownCases } from './case';
-import {
-  IWordEnding,
-  unorderedWordEndings,
-  wordEndings,
-} from './word-ending-utils';
-
 export class StringUtils {
   /**
    * Check if a given string is blank or not
