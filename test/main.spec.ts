@@ -42,3 +42,17 @@ describe('isUpper & isLower tests', () => {
       expect(StringUtils.isLower(key)).toBe(isLowerReturns.get(key)!));
   }
 });
+
+const replaceAtExpectedReturns = new Map<any[], string>([
+  [['This', 2, 'hello'], 'Thhellos'],
+  [['Hello', 18, 'hi'], 'Hello'],
+  [['Hi', -2, 'hello'], 'Hi'],
+]);
+
+for (const key of replaceAtExpectedReturns.keys()) {
+  test(`Should return ${replaceAtExpectedReturns.get(key)!} for '${key}'`, () => {
+    expect(StringUtils.replaceAt(key[0], key[1], key[2])).toBe(
+      replaceAtExpectedReturns.get(key)!,
+    );
+  });
+}
