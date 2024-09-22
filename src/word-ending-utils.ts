@@ -180,4 +180,19 @@ export default class StringUtilsWord {
       word[firstCharIndex].toUpperCase(),
     );
   }
+
+  /**
+   * Return a normalized spaces string
+   *
+   * @param {string} str - The string to clean from excessive spaces
+   * @example
+   * str: This     is a    test.
+   * returns: This is a test.
+   */
+  public static normalizeSpacesBetweenWords(str: string): string {
+    return str
+      .split(' ')
+      .filter((subsequence) => !StringUtils.isBlank(subsequence))
+      .join(' ');
+  }
 }

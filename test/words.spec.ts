@@ -180,8 +180,8 @@ describe('Normalization of stuffs', () => {
 
   const normalizeSpacesBetweenWordsExpectedReturns = new Map<string, string>([
     ['This      is a     test', 'This is a test'],
-    ['Hello             ', 'Hello '],
-    ['      Hello', ' Hello'],
+    ['Hello             ', 'Hello'],
+    ['      Hello', 'Hello'],
   ]);
 
   for (const key of normalizeSpacesBetweenWordsExpectedReturns.keys()) {
