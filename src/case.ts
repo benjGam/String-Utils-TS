@@ -1,3 +1,5 @@
+import { StringUtils } from 'src';
+
 /**
  * This interface provide a structure for literal objects
  * It brings reliable way to add unmanaged cases without any other code writing
@@ -36,3 +38,40 @@ export const knownCases: ICase[] = [
     splitter: /([A-Z]+[a-z]*)/,
   },
 ];
+
+export default class StringUtilsCase {
+  /**
+   * Returns the case with which parameters was written.
+   *
+   * @param {string} str - The string to test to determine case
+   *
+   * @returns {ICase} - The case of given string
+   */
+  public static determineCase(str: string): ICase | undefined {
+    return knownCases.find((caseObject) => str.match(caseObject.matcher));
+  }
+
+  /**
+   * Returns a table of strings, split operation is based on case used
+   * in the given string
+   *
+   * @param {string} str - String with cased content
+   *
+   * @example
+   * str: thisIsMyString
+   * returns: ['this', 'Is', 'My', 'String']
+   * @example
+   * str: This is a test
+   * returns: ['This is a test']
+   * @returns {string[]}
+   */
+  public static splitByCase(str: string): string[] {
+    const caseOfString = this.determineCase(str);
+
+    if (!caseOfString) return [str];
+
+    return str
+      .split(caseOfString.splitter)
+      .filter((subSequence) => !StringUtils.isBlank(subSequence));
+  }
+}

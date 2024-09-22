@@ -7,41 +7,6 @@ import {
 
 export class StringUtils {
   /**
-   * Returns the case with which parameters was written.
-   *
-   * @param {string} str - The string to test to determine case
-   *
-   * @returns {ICase} - The case of given string
-   */
-  public static determineCase(str: string): ICase | undefined {
-    return knownCases.find((caseObject) => str.match(caseObject.matcher));
-  }
-
-  /**
-   * Returns a table of strings, split operation is based on case used
-   * in the given string
-   *
-   * @param {string} str - String with cased content
-   *
-   * @example
-   * str: thisIsMyString
-   * returns: ['this', 'Is', 'My', 'String']
-   * @example
-   * str: This is a test
-   * returns: ['This is a test']
-   * @returns {string[]}
-   */
-  public static splitByCase(str: string): string[] {
-    const caseOfString = this.determineCase(str);
-
-    if (!caseOfString) return [str];
-
-    return str
-      .split(caseOfString.splitter)
-      .filter((subSequence) => !this.isBlank(subSequence));
-  }
-
-  /**
    * Check if a given string is blank or not
    *
    * @param {string} str - To check if it's blank
