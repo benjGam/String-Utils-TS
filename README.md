@@ -14,7 +14,7 @@ This package is a way to help third-party developers but also a way to help myse
 
 (I'm pretty sure that kind of module already exists and are better than mine, but, in any case, it will be usefull to me)
 
-## Features
+## Features (2.0.0 version)
 
 ### StringUtilsWord class
 
@@ -26,3 +26,11 @@ This class is responsible of manage some operations on words, we have following 
 - `singularize()`: This method do the opposite of `pluralize()` one.
 - `formatWord()`: This method is useful if you want to convert a `word` -> `Word`, it could be useful, but it's an extremely rare case.
 - `normalizeSpaceBetweenWords()`: This method is useful when you get a builded string from nowhere and you should ensure that there's no duplicated spaces in it.
+
+### StringUtilsCase class
+
+This class is responsible of manage some operations on case of strings, we have following features:
+
+- `determineCase()`: This method could be useful if you want to know the case of a string (i.e: camelCase, snake_case, PascalCase, UPPERCASE, lowercase)
+- `splitByCase()`: This method could be useful if you want to split a string cased as a certain way, but you want each terms separated in a table.
+- `convertToCase()`: This method could be useful if you want to convert a string from a case to another one (Not implement yet)
