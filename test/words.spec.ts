@@ -159,3 +159,22 @@ describe('Move from singular to plural and vice-versa', () => {
     });
   }
 });
+
+describe('Format word & Format words', () => {
+  const formatWordExpectedReturns = new Map<string, string>([
+    ['this', 'This'],
+    ['    this', '    This'],
+    ['', ''],
+    ['    ', '    '],
+    ['This', 'This'],
+    ['this Is a test', 'This Is a test'],
+  ]);
+
+  for (const key of formatWordExpectedReturns.keys()) {
+    test(`Should return '${formatWordExpectedReturns.get(key)}' for str = '${key}'`, () => {
+      expect(StringUtilsWord.formatWord(key)).toBe(
+        formatWordExpectedReturns.get(key)!,
+      );
+    });
+  }
+});
