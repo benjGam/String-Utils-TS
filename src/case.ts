@@ -1,4 +1,4 @@
-import { StringUtils } from 'src';
+import { StringUtils } from './main';
 
 /**
  * This interface provide a structure for literal objects
