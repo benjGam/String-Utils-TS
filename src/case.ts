@@ -66,12 +66,12 @@ export default class StringUtilsCase {
    * @returns {string[]}
    */
   public static splitByCase(str: string): string[] {
-    const caseOfString = this.determineCase(str);
+    const stringCase = this.determineCase(str);
 
-    if (!caseOfString) return [str];
+    if (!stringCase) return [str];
 
     return str
-      .split(caseOfString.splitter)
+      .split(stringCase.splitter)
       .filter((subSequence) => !StringUtils.isBlank(subSequence));
   }
 }
