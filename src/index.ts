@@ -80,7 +80,10 @@ export class StringUtils {
    * @method getWordEnding
    */
   public static getCorrespondingEnding(word: string): IWordEnding {
-    return null;
+    return wordEndings.find(
+      (ending) =>
+        word.endsWith(ending.pluralForm) || word.endsWith(ending.singularForm),
+    );
   }
 
   /**
