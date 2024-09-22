@@ -174,6 +174,10 @@ export default class StringUtilsWord {
 
     const firstCharIndex = Array.from(word).findIndex((char) => char != ' ');
 
-    return `${word.substring(0, firstCharIndex)}${word[firstCharIndex].toUpperCase()}${word.substring(firstCharIndex + 1, word.length)}`;
+    return StringUtils.replaceAt(
+      word,
+      firstCharIndex,
+      word[firstCharIndex].toUpperCase(),
+    );
   }
 }
