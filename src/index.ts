@@ -130,6 +130,13 @@ export class StringUtils {
    * returns: Passes
    */
   public static pluralize(word: string): string {
-    return '';
+    if (word.length < 2 || this.isPlural(word)) return word;
+
+    const wordEnding = this.getCorrespondingEnding(word);
+
+    return word.replace(
+      new RegExp(`(${wordEnding.singularForm})$`),
+      wordEnding.pluralForm,
+    );
   }
 }
