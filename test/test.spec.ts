@@ -72,6 +72,7 @@ describe('Plural and Singular operations', () => {
     ['List', 'Lists'],
     ['Lists', 'Lists'],
     ['C', 'C'],
+    ['Of', 'Ofs'],
   ]);
 
   for (const key of pluralizeWords.keys()) {
@@ -89,6 +90,7 @@ describe('Plural and Singular operations', () => {
     ['Lists', 'List'],
     ['List', 'List'],
     ['C', 'C'],
+    ['Ofs', 'Of'],
   ]);
 
   for (const key of singularizeWords.keys()) {
