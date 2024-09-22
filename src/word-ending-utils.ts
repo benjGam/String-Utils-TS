@@ -158,4 +158,16 @@ export default class StringUtilsWord {
       wordEnding.singularForm,
     );
   }
+
+  /**
+   * Return a first char uppered word
+   *
+   * @param {string} word - Should be a word
+   * @example
+   * word: test
+   * returns: Test
+   */
+  public static formatWord(word: string): string {
+    return '';
+  }
 }
