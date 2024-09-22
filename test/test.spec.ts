@@ -1,4 +1,4 @@
-import { StringUtils } from '../src';
+import { StringUtils } from '../src/main';
 import { IWordEnding } from '../src/word-ending-utils';
 
 // Casing
