@@ -70,6 +70,7 @@ describe('Plural and Singular operations', () => {
     ['Bee', 'Bees'],
     ['', ''],
     ['List', 'Lists'],
+    ['Lists', 'Lists'],
     ['C', 'C'],
   ]);
 
