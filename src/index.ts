@@ -70,6 +70,14 @@ export class StringUtils {
    * Returns the complete IWordEnding object corresponding
    *
    * @param {string} word - Should be a word
+   *
+   * @remarks
+   * This method should not be used for any external operations.
+   * It's a non optimized way to get a IWordEnding and
+   * should be rework to be lightest.
+   *
+   * If you just want to do some word operation, prefer
+   * @method getWordEnding
    */
   public static getCorrespondingEnding(word: string): IWordEnding {
     return null;
