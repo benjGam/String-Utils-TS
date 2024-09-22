@@ -1,4 +1,4 @@
-import StringUtilsCase from 'src/case';
+import StringUtilsCase from '../src/case';
 
 describe('Casing operation', () => {
   const samples = new Map<string, string>([
