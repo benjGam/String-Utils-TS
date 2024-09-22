@@ -160,7 +160,7 @@ describe('Move from singular to plural and vice-versa', () => {
   }
 });
 
-describe('Format word & Format words', () => {
+describe('Normalization of stuffs', () => {
   const formatWordExpectedReturns = new Map<string, string>([
     ['this', 'This'],
     ['    this', '    This'],
@@ -174,6 +174,20 @@ describe('Format word & Format words', () => {
     test(`Should return '${formatWordExpectedReturns.get(key)}' for str = '${key}'`, () => {
       expect(StringUtilsWord.formatWord(key)).toBe(
         formatWordExpectedReturns.get(key)!,
+      );
+    });
+  }
+
+  const normalizeSpacesBetweenWordsExpectedReturns = new Map<string, string>([
+    ['This      is a     test', 'This is a test'],
+    ['Hello             ', 'Hello '],
+    ['      Hello', ' Hello'],
+  ]);
+
+  for (const key of normalizeSpacesBetweenWordsExpectedReturns.keys()) {
+    test(`Should return '${normalizeSpacesBetweenWordsExpectedReturns.get(key)!}' for str = '${key}'`, () => {
+      expect(StringUtilsWord.normalizeSpacesBetweenWords(key)).toBe(
+        normalizeSpacesBetweenWordsExpectedReturns.get(key)!,
       );
     });
   }
