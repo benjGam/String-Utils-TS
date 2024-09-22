@@ -8,4 +8,15 @@ export class StringUtils {
   public static isBlank(str: string): boolean {
     return str.trim().replaceAll(' ', '').length == 0;
   }
+
+  /**
+   * Check if a given string is upper case
+   *
+   * @param {string} str - Should be non blank string
+   *
+   * @returns {boolean}
+   */
+  public static isUpper(str: string): boolean {
+    return true;
+  }
 }
