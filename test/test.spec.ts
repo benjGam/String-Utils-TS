@@ -79,6 +79,23 @@ describe('Plural and Singular operations', () => {
       expect(StringUtils.pluralize(key)).toBe(pluralizeWords.get(key)!);
     });
   }
+
+  const singularizeWords = new Map<string, string>([
+    ['Passes', 'Pass'],
+    ['Categories', 'Category'],
+    ['Cars', 'Car'],
+    ['Bees', 'Bee'],
+    ['', ''],
+    ['Lists', 'List'],
+    ['List', 'List'],
+    ['C', 'C'],
+  ]);
+
+  for (const key of singularizeWords.keys()) {
+    test(`Should return '${singularizeWords.get(key)!}' for word = '${key}'`, () => {
+      expect(StringUtils.singularize(key)).toBe(singularizeWords.get(key)!);
+    });
+  }
 });
 
 // Non related features
