@@ -49,6 +49,11 @@ export class StringUtils {
     index: number,
     toReplaceWith: string,
   ): string {
-    return '';
+    if (index <= 0 || index >= str.length) return str;
+    return Array.from(str)
+      .map((value, currentIndex) =>
+        currentIndex == index ? toReplaceWith : value,
+      )
+      .join('');
   }
 }
