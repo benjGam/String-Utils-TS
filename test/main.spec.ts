@@ -15,34 +15,6 @@ for (const strKey of isBlankExpectedReturns.keys()) {
   });
 }
 
-describe('isUpper & isLower tests', () => {
-  const isUpperReturns = new Map<string, boolean>([
-    ['H', true],
-    ['h', false],
-    [' ', false],
-    ['THISISATEST', true],
-    ['THISisAtest', false],
-  ]);
-
-  for (const key of isUpperReturns.keys()) {
-    test(`Should return '${isUpperReturns.get(key)!}' for str = '${key}'`, () =>
-      expect(StringUtils.isUpper(key)).toBe(isUpperReturns.get(key)!));
-  }
-
-  const isLowerReturns = new Map<string, boolean>([
-    ['H', false],
-    ['h', true],
-    [' ', false],
-    ['thisisatest', true],
-    ['THISisAtest', false],
-  ]);
-
-  for (const key of isLowerReturns.keys()) {
-    test(`Should return '${isLowerReturns.get(key)!}' for str = '${key}'`, () =>
-      expect(StringUtils.isLower(key)).toBe(isLowerReturns.get(key)!));
-  }
-});
-
 const replaceAtExpectedReturns = new Map<any[], string>([
   [['This', 2, 'hello'], 'Thhellos'],
   [['Hello', 18, 'hi'], 'Hello'],

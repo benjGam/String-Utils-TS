@@ -10,28 +10,6 @@ export class StringUtils {
   }
 
   /**
-   * Check if a given string is upper case
-   *
-   * @param {string} str - Should be non blank string
-   *
-   * @returns {boolean}
-   */
-  public static isUpper(str: string): boolean {
-    return !this.isBlank(str) && str.toUpperCase() == str;
-  }
-
-  /**
-   * Check if a given string is lower case
-   *
-   * @param {string} str - Should be non blank string
-   *
-   * @returns {boolean}
-   */
-  public static isLower(str: string): boolean {
-    return !this.isBlank(str) && str.toLowerCase() == str;
-  }
-
-  /**
    * Replace a subsequent string at a given position by another string in a given string
    *
    * @param {string} str - The string to replace in
