@@ -28,4 +28,17 @@ describe('Non related features', () => {
     test(`Should return '${isUpperReturns.get(key)!}' for str = '${key}'`, () =>
       expect(StringUtils.isUpper(key)).toBe(isUpperReturns.get(key)!));
   }
+
+  const isLowerReturns = new Map<string, boolean>([
+    ['H', false],
+    ['h', true],
+    [' ', false],
+    ['thisisatest', true],
+    ['THISisAtest', false],
+  ]);
+
+  for (const key of isLowerReturns.keys()) {
+    test(`Should return '${isLowerReturns.get(key)!}' for str = '${key}'`, () =>
+      expect(StringUtils.isLower(key)).toBe(isLowerReturns.get(key)!));
+  }
 });
