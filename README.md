@@ -18,10 +18,10 @@ This package is a way to help third-party developers but also a way to help myse
 
 ### StringUtilsWord class
 
-This class is responsible of manage some word operations on words, we have following features:
+This class is responsible of manage some operations on words, we have following features:
 
 - `isPlural()`: This method is useful to know if a provided word is plural or not.
-- `isSingular()`: This method is the opposite of `isPlural()` one.
+- `isSingular()`: This method check the opposite of `isPlural()` one.
 - `pluralize()`: This method convert a provided singular word ending, to plural (i.e: Pass -> Passes).
 - `singularize()`: This method do the opposite of `pluralize()` one.
 - `formatWord()`: This method is useful if you want to convert a `word` -> `Word`, it could be useful, but it's an extremely rare case.
