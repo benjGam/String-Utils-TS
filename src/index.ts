@@ -139,4 +139,16 @@ export class StringUtils {
       wordEnding.pluralForm,
     );
   }
+
+  /**
+   * Return singularized version of the given word
+   *
+   * @param {string} word - Should be a word
+   * @example
+   * word: Passes
+   * returns: Pass
+   */
+  public static singularize(word: string): string {
+    return '';
+  }
 }
