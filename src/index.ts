@@ -149,6 +149,13 @@ export class StringUtils {
    * returns: Pass
    */
   public static singularize(word: string): string {
-    return '';
+    if (word.length < 2 || this.isSingular(word)) return word;
+
+    const wordEnding = this.getCorrespondingEnding(word);
+
+    return word.replace(
+      new RegExp(`(${wordEnding.pluralForm})$`),
+      wordEnding.singularForm,
+    );
   }
 }
