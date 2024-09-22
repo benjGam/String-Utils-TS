@@ -19,7 +19,7 @@ interface ICase {
 /**
  * This table store few basics cases.
  *
- * @method StringUtils.determineCase <- Use it
+ * @method StringUtilsCase.determineCase <- Use it
  */
 const knownCases: ICase[] = [
   {
