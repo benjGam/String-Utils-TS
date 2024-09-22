@@ -17,6 +17,6 @@ export class StringUtils {
    * @returns {boolean}
    */
   public static isUpper(str: string): boolean {
-    return true;
+    return !this.isBlank(str) && str.toUpperCase() == str;
   }
 }
