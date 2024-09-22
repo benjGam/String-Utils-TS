@@ -1,4 +1,5 @@
 import { StringUtils } from '../src';
+import { IWordEnding } from '../src/word-ending-utils';
 
 // Casing
 
@@ -112,6 +113,73 @@ describe('Non related features', () => {
     test(`Should return '${getWordEndingReturns.get(key)!}' for word = '${key}'`, () => {
       expect(StringUtils.getWordEnding(key)).toEqual(
         getWordEndingReturns.get(key)!,
+      );
+    });
+  }
+
+  const getCorrespondingEndingReturns = new Map<string, IWordEnding>([
+    [
+      'Passes',
+      {
+        pluralForm: 'sses',
+        singularForm: 'ss',
+      },
+    ],
+    [
+      'Pass',
+      {
+        pluralForm: 'sses',
+        singularForm: 'ss',
+      },
+    ],
+    [
+      'Categories',
+      {
+        pluralForm: 'ies',
+        singularForm: 'y',
+      },
+    ],
+    [
+      'Category',
+      {
+        pluralForm: 'ies',
+        singularForm: 'y',
+      },
+    ],
+    [
+      'Bees',
+      {
+        pluralForm: 'es',
+        singularForm: 'e',
+      },
+    ],
+    [
+      'Bee',
+      {
+        pluralForm: 'es',
+        singularForm: 'e',
+      },
+    ],
+    [
+      'Cars',
+      {
+        pluralForm: 's',
+        singularForm: '',
+      },
+    ],
+    [
+      'Car',
+      {
+        pluralForm: 's',
+        singularForm: '',
+      },
+    ],
+  ]);
+
+  for (const key of getCorrespondingEndingReturns.keys()) {
+    test(`Should return correct IWordEnding object for word = '${key}'`, () => {
+      expect(StringUtils.getCorrespondingEnding(key)).toEqual(
+        getCorrespondingEndingReturns.get(key)!,
       );
     });
   }
