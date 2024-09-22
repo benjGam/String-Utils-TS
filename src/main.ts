@@ -19,4 +19,15 @@ export class StringUtils {
   public static isUpper(str: string): boolean {
     return !this.isBlank(str) && str.toUpperCase() == str;
   }
+
+  /**
+   * Check if a given string is lower case
+   *
+   * @param {string} str - Should be non blank string
+   *
+   * @returns {boolean}
+   */
+  public static isLower(str: string): boolean {
+    return !this.isBlank(str) && str.toLowerCase() == str;
+  }
 }
