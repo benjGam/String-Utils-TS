@@ -15,4 +15,17 @@ describe('Non related features', () => {
       );
     });
   }
+
+  const isUpperReturns = new Map<string, boolean>([
+    ['H', true],
+    ['h', false],
+    [' ', false],
+    ['THISISATEST', true],
+    ['THISisAtest', false],
+  ]);
+
+  for (const key of isUpperReturns.keys()) {
+    test(`Should return '${isUpperReturns.get(key)!}' for str = '${key}'`, () =>
+      expect(StringUtils.isUpper(key)).toBe(isUpperReturns.get(key)!));
+  }
 });
