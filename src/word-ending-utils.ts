@@ -9,7 +9,7 @@
  * pluralForm: 'ies'
  * singularForm: 'y'
  */
-interface IWordEnding {
+export interface IWordEnding {
   pluralForm: string;
   singularForm: string;
 }
