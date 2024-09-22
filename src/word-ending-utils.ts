@@ -9,7 +9,7 @@
  * pluralForm: 'ies'
  * singularForm: 'y'
  */
-export interface IWordEnding {
+interface IWordEnding {
   pluralForm: string;
   singularForm: string;
 }
@@ -18,7 +18,7 @@ export interface IWordEnding {
  * This object is used to list plural and singular forms
  * of words.
  */
-export const wordEndings: IWordEnding[] = [
+const wordEndings: IWordEnding[] = [
   {
     pluralForm: 'sses',
     singularForm: 'ss',

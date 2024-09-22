@@ -10,7 +10,7 @@ import { StringUtils } from 'src';
  * @field {RegExp | string} splitter is used to split given string who match `matcher`
  *
  */
-export interface ICase {
+interface ICase {
   name: string;
   matcher: RegExp;
   splitter: RegExp | string;
@@ -21,7 +21,7 @@ export interface ICase {
  *
  * @method StringUtils.determineCase <- Use it
  */
-export const knownCases: ICase[] = [
+const knownCases: ICase[] = [
   {
     name: 'snakeCase',
     matcher: /(\w+)_(\w+)/,
