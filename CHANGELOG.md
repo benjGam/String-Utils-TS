@@ -1,46 +1,31 @@
 # VERSION 2.0.0
 
-- [ADDED] Unit testing is now part of this project.
-- [ADDED] [DOCS] TSDoc has been adopted and is now part of this project.
-- [PERFORMANCE] Code has been reworked to improve performance (A performance measurer should be implemented in next realases)
+- Added:
+  - Unit testing is now part of this project.
+  - TSDoc has been adopted and is now part of this project.
+- Performance:
+  - Code has been reworked to improve performance (**A performance measurer should be implemented in next realases**)
 
 ## StringUtils class
 
-- [REMOVED][BREAKING CHANGES] Following methods has been removed from this class:
-  - `singularize();`
-  - `pluralize();`
-  - `formatWord();`
-  - `formatEachWords();`
-  - `getEnding();`
-  - `isPlural();`
-  - `isSingular();`
-  - `removeEndDuplications();`
-  - `resolveCase();`
-  - `splitByCasing();`
-  - `normalizeSpaces();`
-  - `isUpper();`
-  - `isLower();`
-  - `getPluralOf();`
-  - `getSingularOf();`
-- [ADDED] `isBlank(str: string): string` method has been added to check if a given string is empty / blank.
-- [ADDED] `replaceAt(str: string, index: number, toReplaceWith: string): string` method has been added to replace a subsequence of a given string at the given index.
+- Removed: [**BREAKING CHANGES**]
+  - `singularize();`, `pluralize();`, `formatWord();`, `formatEachWords();`, `getEnding();`, `isPlural();`, `isSingular();`, `removeEndDuplications();`, `resolveCase();`, `splitByCasing();`, `normalizeSpaces();`, `isUpper();`, `isLower();`, `getPluralOf();`, `getSingularOf();` methods has been removed.
+- Added:
+  - `isBlank(str: string): string` method has been added to check if a given string is empty / blank.
+  - `replaceAt(str: string, index: number, toReplaceWith: string): string` method has been added to replace a subsequence of a given string at the given index.
 
 ## StringUtilsCase class
 
-- [ADDED] This class was added to separate concerns, this class is now responsible of managing case operations, checking, etc.
-- [ADDED] Following methods has been added to this class:
+- Added:
   - `determineCase();`
-  - `splitByCase();` - just a reworked and renamed version of previous `StringUtils.splitByCasing();`.
+  - `splitByCase();` - a reworked and renamed version of previous `StringUtils.splitByCasing();`.
 
 ## StringUtilsWord class
 
-- [ADDED] This class was added to separate concerns, this class is now responsible of managing words operations, checking, etc.
-- [ADDED] Following methods has been added to this class:
+- Added:
   - `getWordEnding();` - a reworked version in term of performance of previous `StringUtils.getEnding();` method.
   - `getCorrespondingEnding();` - a useful internal method, but also heaviest than `getWordEnding();`, it works like previous `StringUtils.getEnding();` method.
   - `isPlural();` - [FIX] Bring a fix to case where provided words ended with `ss`, there's no confusion, method now manage those cases.
-  - `isSingular();`
-  - `pluralize();`
-  - `singularize();`
+  - `isSingular();`, `pluralize();`, `singularize();` - moved from `StringUtils` to `StringUtilsWord` class.
   - `formatWord();` - has been reworked and now use `StringUtils.replaceAt();` method to optimize process.
   - `normalizeSpacesBetweenWords();` - to be be rework in next release.
