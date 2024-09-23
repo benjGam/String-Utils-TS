@@ -1,4 +1,5 @@
 import { StringUtils } from './main';
+import StringUtilsWord from './word-ending-utils';
 
 /**
  * This interface provide a structure for literal objects
@@ -94,5 +95,44 @@ export default class StringUtilsCase {
     return str
       .split(stringCase.splitter)
       .filter((subSequence) => !StringUtils.isBlank(subSequence));
+  }
+
+  /**
+   * Returns a given string converted to targetedCase
+   *
+   * @param {string} str - The string to convert
+   * @param {Case} caseToConvert - The case to convert
+   *
+   * @example
+   * str: thisIsATest
+   * case: snakeCase
+   * returns: this_is_a_test
+   */
+  public static convertToCase(str: string, caseToConvert: Case): string {
+    if (str.trim().replaceAll(' ', '').length < 2) return str;
+
+    const splittedByCaseString = this.splitByCase(str);
+    if (splittedByCaseString.length == 1) return str; // Case was unsucessfully determinated
+
+    switch (caseToConvert) {
+      case 'lowerCase':
+        return splittedByCaseString.join('').toLowerCase();
+      case 'upperCase':
+        return splittedByCaseString.join('').toUpperCase();
+      case 'camelCase':
+        return splittedByCaseString
+          .map((subsequence, index) =>
+            index == 0
+              ? subsequence.toLowerCase()
+              : StringUtilsWord.formatWord(subsequence),
+          )
+          .join('');
+      case 'pascalCase':
+        return splittedByCaseString
+          .map((subsequence) => StringUtilsWord.formatWord(subsequence))
+          .join('');
+      case 'snakeCase':
+        return splittedByCaseString.join('_').toLowerCase();
+    }
   }
 }
