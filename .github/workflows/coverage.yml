@@ -1,6 +1,6 @@
 name: 'Report Coverage'
 on:
-  pull_request_target:
+  pull_request:
     branches:
       - main
 jobs:
@@ -9,3 +9,5 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: ArtiomTr/jest-coverage-report-action@v2
+        with:
+          github-token: ${{ secrets.COVERAGE_ACTION }}
