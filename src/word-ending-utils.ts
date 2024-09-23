@@ -195,4 +195,25 @@ export default class StringUtilsWord {
       .filter((subsequence) => !StringUtils.isBlank(subsequence))
       .join(' ');
   }
+
+  /**
+   * Return a string with each words formated.
+   *
+   * @param {string | string[]} toFormat - The string or table of strings to format
+   *
+   * @example
+   * toFormat: 'Hello this is my example'
+   * returns: 'Hello This Is My Example'
+   *
+   * @example
+   * toFormat: ['Hello', 'this', 'is', 'my', 'example']
+   * returns: 'Hello This Is My Example'
+   */
+  public static formatWords(toFormat: string | string[]): string {
+    if (!Array.isArray(toFormat)) toFormat = toFormat.split(' ');
+    if (toFormat.length == 0) return toFormat.join(' ');
+    return toFormat
+      .map((subSequence) => this.formatWord(subSequence))
+      .join(' ');
+  }
 }
