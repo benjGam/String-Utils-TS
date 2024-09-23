@@ -1,4 +1,3 @@
-import { StringUtils } from './main';
 import StringUtilsWord from './word-ending-utils';
 
 /**
@@ -92,9 +91,7 @@ export default class StringUtilsCase {
 
     if (!stringCase) return [str];
 
-    return str
-      .split(stringCase.splitter)
-      .filter((subSequence) => !StringUtils.isBlank(subSequence));
+    return str.split(stringCase.splitter).filter((subSequence) => subSequence);
   }
 
   /**
@@ -121,15 +118,15 @@ export default class StringUtilsCase {
         return splittedByCaseString.join('').toUpperCase();
       case 'camelCase':
         return splittedByCaseString
-          .map((subsequence, index) =>
+          .map((subSequence, index) =>
             index == 0
-              ? subsequence.toLowerCase()
-              : StringUtilsWord.formatWord(subsequence),
+              ? subSequence.toLowerCase()
+              : StringUtilsWord.formatWord(subSequence),
           )
           .join('');
       case 'pascalCase':
         return splittedByCaseString
-          .map((subsequence) => StringUtilsWord.formatWord(subsequence))
+          .map((subSequence) => StringUtilsWord.formatWord(subSequence))
           .join('');
       case 'snakeCase':
         return splittedByCaseString.join('_').toLowerCase();
