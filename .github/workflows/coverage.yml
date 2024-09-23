@@ -4,10 +4,10 @@ on:
     branches:
       - main
 jobs:
-    permissions:
-        contents: write
-        pull-requests: write
-        checks: write
+  permissions:
+    checks: write
+    contents: read|write|none
+    pull-requests: read|write|none
   coverage:
     runs-on: ubuntu-latest
     steps:
