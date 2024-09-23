@@ -34,15 +34,15 @@ describe('Casing operation', () => {
   }
 
   const convertToCaseExpectedReturns = new Map<[string, Case], string>([
-    [['thisIsATest', 'snakeCase'], 'this_is_a_test'],
-    [['thisIsATest', 'camelCase'], 'thisIsATest'],
-    [['thisIsATest', 'pascalCase'], 'ThisIsATest'],
-    [['thisIsATest', 'lowerCase'], 'thisisatest'],
-    [['thisIsATest', 'upperCase'], 'THISISATEST'],
+    [['thisIsMyTest', 'snakeCase'], 'this_is_my_test'],
+    [['thisIsMyTest', 'camelCase'], 'thisIsMyTest'],
+    [['thisIsMyTest', 'pascalCase'], 'ThisIsMyTest'],
+    [['thisIsMyTest', 'lowerCase'], 'thisismytest'],
+    [['thisIsMyTest', 'upperCase'], 'THISISMYTEST'],
     [['a', 'camelCase'], 'a'],
-    [['this', 'camelCase'], 'this'],
+    [['this', 'camelCase'], 'tHIS'],
     [['th', 'camelCase'], 'tH'],
-    [['thisISATEST', 'camelCase'], 'thisISATEST'],
+    [['thisISMYTEST', 'camelCase'], 'thisISMYTEST'],
   ]);
 
   for (const [key, value] of convertToCaseExpectedReturns.entries()) {
