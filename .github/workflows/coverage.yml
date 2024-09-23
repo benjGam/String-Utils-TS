@@ -6,8 +6,8 @@ on:
 jobs:
   permissions:
     checks: write
-    contents: read|write|none
-    pull-requests: read|write|none
+    contents: write
+    pull-requests: write
   coverage:
     runs-on: ubuntu-latest
     steps:
