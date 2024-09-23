@@ -210,8 +210,12 @@ export default class StringUtilsWord {
    * returns: 'Hello This Is My Example'
    */
   public static formatWords(toFormat: string | string[]): string {
-    if (!Array.isArray(toFormat)) toFormat = toFormat.split(' ');
-    if (toFormat.length == 0) return toFormat.join(' ');
+    if (!Array.isArray(toFormat)) {
+      if (StringUtils.isBlank(toFormat)) return toFormat;
+      toFormat = toFormat.split(' ');
+    }
+    if (StringUtils.isBlank(toFormat.join(''))) return toFormat.join('');
+
     return toFormat
       .map((subSequence) => this.formatWord(subSequence))
       .join(' ');
