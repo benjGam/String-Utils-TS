@@ -3,6 +3,7 @@
 - Added:
   - Unit testing is now part of this project.
   - TSDoc has been adopted and is now part of this project.
+  - Code quality components is now part of this project (ESLint & Prettier)
 - Performance:
   - Code has been reworked to improve performance (**A performance measurer should be implemented in next realases**)
 
