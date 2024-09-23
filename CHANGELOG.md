@@ -31,3 +31,16 @@
 - [ADDED] Following methods has been added to this class:
   - `determineCase();`
   - `splitByCase();` - just a reworked and renamed version of previous `StringUtils.splitByCasing();`.
+
+## StringUtilsWord class
+
+- [ADDED] This class was added to separate concerns, this class is now responsible of managing words operations, checking, etc.
+- [ADDED] Following methods has been added to this class:
+  - `getWordEnding();` - a reworked version in term of performance of previous `StringUtils.getEnding();` method.
+  - `getCorrespondingEnding();` - a useful internal method, but also heaviest than `getWordEnding();`, it works like previous `StringUtils.getEnding();` method.
+  - `isPlural();` - [FIX] Bring a fix to case where provided words ended with `ss`, there's no confusion, method now manage those cases.
+  - `isSingular();`
+  - `pluralize();`
+  - `singularize();`
+  - `formatWord();` - has been reworked and now use `StringUtils.replaceAt();` method to optimize process.
+  - `normalizeSpacesBetweenWords();` - to be be rework in next release.
