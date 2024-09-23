@@ -1,4 +1,9 @@
-# VERSION 2.1.0
+# Version 2.2.0
+
+- `Added`:
+  - `StringUtilsWord.formatWords(toFormat: string | string[])` apply `StringUtilsWord.formatWord(str)` to a complete sentence or table of words.
+
+# Version 2.1.0
 
 - `Fixes`:
   - `StringUtilsCase.splitByCase()` method doesn't remove spaces anymore while splitting `lowercase` and `uppercase` formed strings.
@@ -6,7 +11,7 @@
   - `type Case` is now provided to reliably link managed cases.
   - `StringUtilsCase.convertToCase(str: string, caseToConvert: Case)` has been implemented.
 
-# VERSION 2.0.0
+# Version 2.0.0
 
 - Added:
   - Unit testing is now part of this project.

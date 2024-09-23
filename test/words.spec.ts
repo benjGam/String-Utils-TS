@@ -191,4 +191,18 @@ describe('Normalization of stuffs', () => {
       );
     });
   }
+
+  const formatWordsExpectedReturns = new Map<string | string[], string>([
+    ['This is my test', 'This Is My Test'],
+    [['This', 'is', 'my', 'test'], 'This Is My Test'],
+    [['        ', ''], '        '],
+    ['      ', '      '],
+    [['This ', 'is ', 'my ', 'test'], 'This  Is  My  Test'],
+  ]);
+
+  for (const [key, value] of formatWordsExpectedReturns.entries()) {
+    test(`Should return '${value}' for '${key}'`, () => {
+      expect(StringUtilsWord.formatWords(key)).toEqual(value);
+    });
+  }
 });
