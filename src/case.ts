@@ -11,10 +11,21 @@ import { StringUtils } from './main';
  *
  */
 interface ICase {
-  name: string;
+  name: Case;
   matcher: RegExp;
   splitter: RegExp | string;
 }
+
+/**
+ * This type is used to ensure case selection is reliable
+ */
+
+export type Case =
+  | 'snakeCase'
+  | 'pascalCase'
+  | 'lowerCase'
+  | 'upperCase'
+  | 'camelCase';
 
 /**
  * This table store few basics cases.
