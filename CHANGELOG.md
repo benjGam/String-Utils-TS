@@ -1,4 +1,4 @@
-# VESION 2.1.0
+# VERSION 2.1.0
 
 - `Fixes`:
   - `StringUtilsCase.splitByCase()` method doesn't remove spaces anymore while splitting `lowercase` and `uppercase` formed strings.
