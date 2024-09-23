@@ -41,3 +41,5 @@ This class is responsible to manage other operations unrelated to a specific sco
 
 - `isBlank()`: This method is useful to know if a string contains other chars than spaces and if it's not empty.
 - `replaceAt()`: This method is useful to replace a specific substring at specified index by another one in a given string.
+
+To follow changes of package, see [Changelog](./CHANGELOG.md)
