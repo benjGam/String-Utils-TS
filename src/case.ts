@@ -111,7 +111,7 @@ export default class StringUtilsCase {
     const splittedByCaseString = this.splitByCase(str);
     if (splittedByCaseString.length == 1) return str; // Case was unsucessfully determinated
 
-    // Just another test again
+    // Please, help me
 
     switch (caseToConvert) {
       case 'lowerCase':
