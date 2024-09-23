@@ -33,6 +33,16 @@ const knownCases: ICase[] = [
     splitter: /([A-Z]+[a-z]*)/,
   },
   {
+    name: 'lowerCase',
+    matcher: /^[a-z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?\s]*$/,
+    splitter: '',
+  },
+  {
+    name: 'upperCase',
+    matcher: /^[A-Z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?\s]*$/,
+    splitter: '',
+  },
+  {
     name: 'camelCase',
     matcher: /^[a-z]+(?:[A-Z][a-z]+)*$/,
     splitter: /([A-Z]+[a-z]*)/,
@@ -48,7 +58,7 @@ export default class StringUtilsCase {
    * @returns {ICase} - The case of given string
    */
   public static determineCase(str: string): ICase | undefined {
-    return knownCases.find((caseObject) => str.match(caseObject.matcher));
+    return knownCases.find((caseObject) => caseObject.matcher.test(str));
   }
 
   /**

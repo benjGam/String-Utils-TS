@@ -1,10 +1,13 @@
 import StringUtilsCase from '../src/case';
 
 describe('Casing operation', () => {
-  const samples = new Map<string, string>([
+  const samples = new Map<string | undefined, string>([
     ['camelCase', 'thisIsMyTest'],
     ['pascalCase', 'ThisIsMyTest'],
     ['snakeCase', 'this_is_my_test'],
+    ['upperCase', 'THISISMY23  TEST'],
+    ['lowerCase', 'thisis02my  test'],
+    [undefined, 'thisisATEST'],
   ]);
 
   for (const key of samples.keys()) {
@@ -18,6 +21,8 @@ describe('Casing operation', () => {
     ['ThisIsMyTest', ['This', 'Is', 'My', 'Test']],
     ['this_is_my_test', ['this', 'is', 'my', 'test']],
     ['This is my test', ['This is my test']],
+    ['THIS', ['T', 'H', 'I', 'S']],
+    ['this', ['t', 'h', 'i', 's']],
   ]);
 
   for (const key of splittedByCase.keys()) {
