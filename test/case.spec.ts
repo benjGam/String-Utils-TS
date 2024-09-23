@@ -1,4 +1,4 @@
-import StringUtilsCase from '../src/case';
+import StringUtilsCase, { Case } from '../src/case';
 
 describe('Casing operation', () => {
   const samples = new Map<string | undefined, string>([
@@ -30,6 +30,24 @@ describe('Casing operation', () => {
       expect(StringUtilsCase.splitByCase(key)).toEqual(
         splittedByCase.get(key)!,
       );
+    });
+  }
+
+  const convertToCaseExpectedReturns = new Map<[string, Case], string>([
+    [['thisIsATest', 'snakeCase'], 'this_is_a_test'],
+    [['thisIsATest', 'camelCase'], 'thisIsATest'],
+    [['thisIsATest', 'pascalCase'], 'ThisIsATest'],
+    [['thisIsATest', 'lowerCase'], 'thisisatest'],
+    [['thisIsATest', 'upperCase'], 'THISISATEST'],
+    [['a', 'camelCase'], 'a'],
+    [['this', 'camelCase'], 'this'],
+    [['th', 'camelCase'], 'tH'],
+    [['thisISATEST', 'camelCase'], 'thisISATEST'],
+  ]);
+
+  for (const [key, value] of convertToCaseExpectedReturns.entries()) {
+    test(`Should return '${value}' for '${key}'`, () => {
+      expect(StringUtilsCase.convertToCase(...key)).toBe(value);
     });
   }
 });
