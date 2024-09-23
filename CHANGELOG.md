@@ -1,3 +1,11 @@
+# VESION 2.1.0
+
+- `Fixes`:
+  - `StringUtilsCase.splitByCase()` method doesn't remove spaces anymore while splitting `lowercase` and `uppercase` formed strings.
+- `Added`:
+  - `type Case` is now provided to reliably link managed cases.
+  - `StringUtilsCase.convertToCase(str: string, caseToConvert: Case)` has been implemented.
+
 # VERSION 2.0.0
 
 - Added:
