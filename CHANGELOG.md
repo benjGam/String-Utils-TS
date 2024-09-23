@@ -1,3 +1,8 @@
+# Version 2.2.0
+
+- `Added`:
+  - `StringUtilsWord.formatWords(toFormat: string | string[])` apply `StringUtilsWord.formatWord(str)` to a complete sentence or table of words.
+
 # VERSION 2.1.0
 
 - `Fixes`:
