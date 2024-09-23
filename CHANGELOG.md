@@ -18,7 +18,7 @@
 
 - Added:
   - `determineCase();`
-  - `splitByCase();` - a reworked and renamed version of previous `StringUtils.splitByCasing();`.
+  - `splitByCase();` - a reworked and renamed version of previous `StringUtils.splitByCasing();` method.
 
 ## StringUtilsWord class
 
