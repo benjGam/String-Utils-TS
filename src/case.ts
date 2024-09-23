@@ -1,4 +1,4 @@
-import { StringUtils } from './main';
+import StringUtilsWord from './word-ending-utils';
 
 /**
  * This interface provide a structure for literal objects
@@ -11,10 +11,21 @@ import { StringUtils } from './main';
  *
  */
 interface ICase {
-  name: string;
+  name: Case;
   matcher: RegExp;
   splitter: RegExp | string;
 }
+
+/**
+ * This type is used to ensure case selection is reliable
+ */
+
+export type Case =
+  | 'snakeCase'
+  | 'pascalCase'
+  | 'lowerCase'
+  | 'upperCase'
+  | 'camelCase';
 
 /**
  * This table store few basics cases.
@@ -80,8 +91,45 @@ export default class StringUtilsCase {
 
     if (!stringCase) return [str];
 
-    return str
-      .split(stringCase.splitter)
-      .filter((subSequence) => !StringUtils.isBlank(subSequence));
+    return str.split(stringCase.splitter).filter((subSequence) => subSequence);
+  }
+
+  /**
+   * Returns a given string converted to targetedCase
+   *
+   * @param {string} str - The string to convert
+   * @param {Case} caseToConvert - The case to convert
+   *
+   * @example
+   * str: thisIsATest
+   * case: snakeCase
+   * returns: this_is_a_test
+   */
+  public static convertToCase(str: string, caseToConvert: Case): string {
+    if (str.trim().replaceAll(' ', '').length < 2) return str;
+
+    const splittedByCaseString = this.splitByCase(str);
+    if (splittedByCaseString.length == 1) return str; // Case was unsucessfully determinated
+
+    switch (caseToConvert) {
+      case 'lowerCase':
+        return splittedByCaseString.join('').toLowerCase();
+      case 'upperCase':
+        return splittedByCaseString.join('').toUpperCase();
+      case 'camelCase':
+        return splittedByCaseString
+          .map((subSequence, index) =>
+            index == 0
+              ? subSequence.toLowerCase()
+              : StringUtilsWord.formatWord(subSequence),
+          )
+          .join('');
+      case 'pascalCase':
+        return splittedByCaseString
+          .map((subSequence) => StringUtilsWord.formatWord(subSequence))
+          .join('');
+      case 'snakeCase':
+        return splittedByCaseString.join('_').toLowerCase();
+    }
   }
 }
