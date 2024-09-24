@@ -116,11 +116,7 @@ export class StringUtils {
   public static blendIrrelevantStringsInRelevantOnes(str: string): string[] {
     const splittedStr =
       StringUtilsWord.normalizeSpacesBetweenWords(str).split(' ');
-    if (
-      splittedStr.find((subSequence) =>
-        this.isConsiderableCharSequence(subSequence),
-      ) == undefined
-    )
+    if (!this.containsConsiderableCharSequence(splittedStr))
       return [this.removeBlankChars(str)];
 
     const revelantSubSequences: string[] = [];
