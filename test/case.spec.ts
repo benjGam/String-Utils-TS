@@ -101,9 +101,9 @@ describe('Casing operation', () => {
     ['ThisIsMyTest', 'this_is_my_test'],
     ['This Is My Test', 'this_is_my_test'],
   ]);
-  for (const [input, output] of toPascalCaseExpectedReturns.entries()) {
+  for (const [input, output] of toSnakeCaseExpectedReturns.entries()) {
     test(`Should return '${output}' for '${input}'`, () => {
-      expect(StringUtilsCase.toPascalCase(input)).toBe(output);
+      expect(StringUtilsCase.toSnakeCase(input)).toBe(output);
     });
   }
 });
