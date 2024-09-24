@@ -223,7 +223,9 @@ export default class StringUtilsCase {
 
     if (!str.includes(' ')) {
       if (!this.determineCase(str)) return str;
-      const splittedByCase = this.splitByCase(str);
+      const splittedByCase = this.splitByCase(
+        StringUtils.removeBlankChars(str),
+      );
 
       return splittedByCase.join('_').toLowerCase();
     }
@@ -235,8 +237,10 @@ export default class StringUtilsCase {
 
     const blended = StringUtils.blendIrrelevantStringsInRelevantOnes(str);
 
-    return (blended.length < 2 ? this.splitByCase(str) : blended)
-      .join('_')
-      .toLowerCase();
+    return blended.length <= 2 && this.determineCase(blended.join(''))
+      ? this.splitByCase(blended.join('')).join('_').toLowerCase()
+      : StringUtilsWord.normalizeSpacesBetweenWords(
+          blended.join('_'),
+        ).toLowerCase();
   }
 }
