@@ -1,3 +1,5 @@
+import StringUtilsWord from './word';
+
 export class StringUtils {
   /**
    * Check if a given string is blank or not
@@ -63,5 +65,51 @@ export class StringUtils {
    */
   public static removeBlankChars(str: string): string {
     return str.replaceAll(' ', '');
+  }
+
+  /**
+   * Returns a table of string where each element is at least 2 length char
+   *
+   * @param {string} str - Should be a string containing spaces and at least 2 letters
+   *
+   * @remarks
+   * This method works only if str starts with a relevant / considerable sub string sequence, it should be rework later to manage following relevant sequences
+   *
+   * @example
+   * str: 'This    is my   ex a m p l   e'
+   * returns: ['This', 'is', 'my', 'example']
+   * @example
+   * str: 'T h i s m y e x a m p l e'
+   * returns: ['Thisismyexample']
+   * @example
+   * str: 'Thi   s is my exa mple'
+   * returns: ['This is my exa mple']
+   *
+   */
+  public static blendIrrelevantStringsInRelevantOnes(str: string): string[] {
+    const splittedStr =
+      StringUtilsWord.normalizeSpacesBetweenWords(str).split(' ');
+    if (
+      splittedStr.find((subSequence) =>
+        this.isConsiderableCharSequence(subSequence),
+      ) == undefined
+    )
+      return [this.removeBlankChars(str)];
+
+    const revelantSubSequences: string[] = [];
+
+    /* If the current subsequence is relevant, push it to revelants table
+     * Otherwise append the current one to the last relevant subsequence
+     */
+
+    splittedStr.forEach((subSequence) => {
+      if (this.isConsiderableCharSequence(subSequence))
+        revelantSubSequences.push(subSequence);
+      else
+        revelantSubSequences[revelantSubSequences.length - 1] +=
+          `${subSequence}`;
+    });
+
+    return revelantSubSequences;
   }
 }
