@@ -1,5 +1,4 @@
 export default abstract class Case {
-  private _name: string;
   private _matcher: RegExp;
   private _splitter: RegExp | string;
 
@@ -7,7 +6,7 @@ export default abstract class Case {
   public abstract blendedConversionReturnFn(): string;
 
   public get name(): string {
-    return this._name;
+    return this.constructor.name;
   }
 
   public get matcher(): RegExp {
