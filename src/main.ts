@@ -67,7 +67,7 @@ export class StringUtils {
    * stringTable: ['This', 'i', 's', 'my', 'example']
    * returns: false
    */
-  public static containsOnlyConsiderableCharSequence(
+  public static containsOnlyConsiderableCharSequences(
     stringTable: string[],
   ): boolean {
     if (this.isBlank(stringTable.join(''))) return false;
@@ -139,8 +139,12 @@ export class StringUtils {
   public static blendIrrelevantStringsInRelevantOnes(str: string): string[] {
     const splittedStr =
       StringUtilsWord.normalizeSpacesBetweenWords(str).split(' ');
+
     if (!this.containsConsiderableCharSequence(splittedStr))
       return [this.removeBlankChars(str)];
+
+    if (this.containsOnlyConsiderableCharSequences(splittedStr))
+      return splittedStr;
 
     const revelantSubSequences: string[] = [];
 

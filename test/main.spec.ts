@@ -85,7 +85,7 @@ for (const [input, output] of containsConsiderableCharSequence.entries()) {
   });
 }
 
-const containsOnlyConsiderableCharSequenceExpectedReturns = new Map<
+const containsOnlyConsiderableCharSequencesExpectedReturns = new Map<
   string[],
   boolean
 >([
@@ -97,9 +97,9 @@ const containsOnlyConsiderableCharSequenceExpectedReturns = new Map<
 for (const [
   input,
   output,
-] of containsOnlyConsiderableCharSequenceExpectedReturns.entries()) {
+] of containsOnlyConsiderableCharSequencesExpectedReturns.entries()) {
   test(`SHould return '${output}' for '${input}'`, () => {
-    expect(StringUtils.containsOnlyConsiderableCharSequence(input)).toBe(
+    expect(StringUtils.containsOnlyConsiderableCharSequences(input)).toBe(
       output,
     );
   });
