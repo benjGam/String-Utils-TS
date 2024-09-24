@@ -34,4 +34,22 @@ export class StringUtils {
 
     return strArray.join('');
   }
+
+  /**
+   * Returns a boolean indicating if given string is atleast 2 lengthed string
+   *
+   * @param {string} str
+   * @example
+   * str: '      t'
+   * returns: false
+   * @example
+   * str: 'test'
+   * returns: true
+   * @example
+   * str: 'of    '
+   * returns: true
+   */
+  public static isConsiderableCharSequence(str: string): boolean {
+    return str.trim().replaceAll(' ', '').length >= 2;
+  }
 }
