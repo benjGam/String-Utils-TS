@@ -51,4 +51,17 @@ export class StringUtils {
 
     return strArray.join('');
   }
+
+  /**
+   * Return a string removed from all blank chars
+   *
+   * @param {string} str - The string of which remove blank spaces
+   *
+   * @example
+   * str: This is my example
+   * returns: Thisismyexample
+   */
+  public static removeBlankChars(str: string): string {
+    return str.replaceAll(' ', '');
+  }
 }
