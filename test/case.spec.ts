@@ -52,4 +52,22 @@ describe('Casing operation', () => {
       expect(StringUtilsCase.convertToCase(...key)).toBe(value);
     });
   }
+
+  const toCamelCaseExpectedReturns = new Map<string, string>([
+    ['thisIsMyTest', 'thisIsMyTest'],
+    ['ThisIsMyTest', 'thisIsMyTest'],
+    ['', ''],
+    ['th', 'tH'],
+    ['    th', 'tH'],
+    ['thisIsM      y Tes t', 'thisIsMyTest'],
+    ['this_is_my_test', 'thisIsMyTest'],
+    ['this is my test', 'thisIsMyTest'],
+    ['ThisIsMyTest', 'thisIsMyTest'],
+    ['This Is My Test', 'thisIsMyTest'],
+  ]);
+  for (const [input, output] of toCamelCaseExpectedReturns.entries()) {
+    test(`Should return '${output}' for '${input}'`, () => {
+      expect(StringUtilsCase.toCamelCase(input)).toBe(output);
+    });
+  }
 });
