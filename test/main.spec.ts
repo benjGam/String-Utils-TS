@@ -44,3 +44,15 @@ for (const [
     expect(StringUtils.isConsiderableCharSequence(input)).toBe(output);
   });
 }
+
+const removeBlankCharsExpectedReturns = new Map<string, string>([
+  ['This is a test', 'Thisisatest'],
+  ['Thisisatest', 'Thisisatest'],
+  ['    ', ''],
+  ['', ''],
+]);
+for (const [input, output] of removeBlankCharsExpectedReturns.entries()) {
+  test(`Should return '${output}' for '${input}'`, () => {
+    expect(StringUtils.removeBlankChars(input)).toBe(output);
+  });
+}
