@@ -1,3 +1,4 @@
+import { StringUtils } from './main';
 import StringUtilsWord from './word-ending-utils';
 
 /**
@@ -106,7 +107,7 @@ export default class StringUtilsCase {
    * returns: this_is_a_test
    */
   public static convertToCase(str: string, caseToConvert: Case): string {
-    if (str.trim().replaceAll(' ', '').length < 2) return str;
+    if (!StringUtils.isConsiderableCharSequence(str)) return str;
 
     const splittedByCaseString = this.splitByCase(str);
     if (splittedByCaseString.length == 1) return str; // Case was unsucessfully determinated

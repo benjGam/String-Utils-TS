@@ -8,6 +8,23 @@ export class StringUtils {
   public static isBlank(str: string): boolean {
     return str.trim().replaceAll(' ', '').length == 0;
   }
+  /**
+   * Returns a boolean indicating if given string is atleast 2 lengthed string
+   *
+   * @param {string} str
+   * @example
+   * str: '      t'
+   * returns: false
+   * @example
+   * str: 'test'
+   * returns: true
+   * @example
+   * str: 'of    '
+   * returns: true
+   */
+  public static isConsiderableCharSequence(str: string): boolean {
+    return str.trim().replaceAll(' ', '').length >= 2;
+  }
 
   /**
    * Replace a subsequent string at a given position by another string in a given string
@@ -33,23 +50,5 @@ export class StringUtils {
     strArray[index] = toReplaceWith;
 
     return strArray.join('');
-  }
-
-  /**
-   * Returns a boolean indicating if given string is atleast 2 lengthed string
-   *
-   * @param {string} str
-   * @example
-   * str: '      t'
-   * returns: false
-   * @example
-   * str: 'test'
-   * returns: true
-   * @example
-   * str: 'of    '
-   * returns: true
-   */
-  public static isConsiderableCharSequence(str: string): boolean {
-    return str.trim().replaceAll(' ', '').length >= 2;
   }
 }
