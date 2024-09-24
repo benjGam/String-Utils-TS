@@ -88,4 +88,22 @@ describe('Casing operation', () => {
       expect(StringUtilsCase.toPascalCase(input)).toBe(output);
     });
   }
+
+  const toSnakeCaseExpectedReturns = new Map<string, string>([
+    ['thisIsMyTest', 'this_is_my_test'],
+    ['ThisIsMyTest', 'this_is_my_test'],
+    ['', ''],
+    ['th', 't_h'],
+    ['    th', 't_h'],
+    ['thisIsM      y Tes t', 'this_is_my_test'],
+    ['this_is_my_test', 'this_is_my_test'],
+    ['this is my test', 'this_is_my_test'],
+    ['ThisIsMyTest', 'this_is_my_test'],
+    ['This Is My Test', 'this_is_my_test'],
+  ]);
+  for (const [input, output] of toPascalCaseExpectedReturns.entries()) {
+    test(`Should return '${output}' for '${input}'`, () => {
+      expect(StringUtilsCase.toPascalCase(input)).toBe(output);
+    });
+  }
 });
