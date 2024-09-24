@@ -76,7 +76,7 @@ describe('Casing operation', () => {
     ['ThisIsMyTest', 'ThisIsMyTest'],
     ['', ''],
     ['th', 'Th'],
-    ['    th', 'tH'],
+    ['    th', 'Th'],
     ['thisIsM      y Tes t', 'ThisIsMyTest'],
     ['this_is_my_test', 'ThisIsMyTest'],
     ['this is my test', 'ThisIsMyTest'],
