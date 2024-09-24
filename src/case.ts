@@ -237,7 +237,7 @@ export default class StringUtilsCase {
 
     const blended = StringUtils.blendIrrelevantStringsInRelevantOnes(str);
 
-    return blended.length <= 2 && this.determineCase(blended.join(''))
+    return blended.length <= 2
       ? this.splitByCase(blended.join('')).join('_').toLowerCase()
       : StringUtilsWord.normalizeSpacesBetweenWords(
           blended.join('_'),
