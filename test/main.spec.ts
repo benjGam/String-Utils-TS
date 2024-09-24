@@ -84,3 +84,23 @@ for (const [input, output] of containsConsiderableCharSequence.entries()) {
     expect(StringUtils.containsConsiderableCharSequence(input)).toBe(output);
   });
 }
+
+const containsOnlyConsiderableCharSequenceExpectedReturns = new Map<
+  string[],
+  boolean
+>([
+  ['this is my example'.split(' '), true],
+  ['this i s my example'.split(' '), false],
+  ['    '.split(' '), false],
+]);
+
+for (const [
+  input,
+  output,
+] of containsOnlyConsiderableCharSequenceExpectedReturns.entries()) {
+  test(`SHould return '${output}' for '${input}'`, () => {
+    expect(StringUtils.containsOnlyConsiderableCharSequence(input)).toBe(
+      output,
+    );
+  });
+}
