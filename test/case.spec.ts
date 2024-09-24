@@ -1,12 +1,12 @@
-import StringUtilsCase, { Case } from '../src/case';
+import StringUtilsCase, { CaseName } from '../src/case';
 
 describe('Casing operation', () => {
   const samples = new Map<string | undefined, string>([
-    ['camelCase', 'thisIsMyTest'],
-    ['pascalCase', 'ThisIsMyTest'],
-    ['snakeCase', 'this_is_my_test'],
-    ['upperCase', 'THISISMY23  TEST'],
-    ['lowerCase', 'thisis02my  test'],
+    ['CamelCase', 'thisIsMyTest'],
+    ['PascalCase', 'ThisIsMyTest'],
+    ['SnakeCase', 'this_is_my_test'],
+    ['UpperCase', 'THISISMY23  TEST'],
+    ['LowerCase', 'thisis02my  test'],
     [undefined, 'thisisATEST'],
   ]);
 
@@ -35,16 +35,16 @@ describe('Casing operation', () => {
     });
   }
 
-  const convertToCaseExpectedReturns = new Map<[string, Case], string>([
-    [['thisIsMyTest', 'snakeCase'], 'this_is_my_test'],
-    [['thisIsMyTest', 'camelCase'], 'thisIsMyTest'],
-    [['thisIsMyTest', 'pascalCase'], 'ThisIsMyTest'],
-    [['thisIsMyTest', 'lowerCase'], 'thisismytest'],
-    [['thisIsMyTest', 'upperCase'], 'THISISMYTEST'],
-    [['a', 'camelCase'], 'a'],
-    [['this', 'camelCase'], 'tHIS'],
-    [['th', 'camelCase'], 'tH'],
-    [['thisISMYTEST', 'camelCase'], 'thisISMYTEST'],
+  const convertToCaseExpectedReturns = new Map<[string, CaseName], string>([
+    [['thisIsMyTest', 'SnakeCase'], 'this_is_my_test'],
+    [['thisIsMyTest', 'CamelCase'], 'thisIsMyTest'],
+    [['thisIsMyTest', 'PascalCase'], 'ThisIsMyTest'],
+    [['thisIsMyTest', 'LowerCase'], 'thisismytest'],
+    [['thisIsMyTest', 'UpperCase'], 'THISISMYTEST'],
+    [['a', 'CamelCase'], 'a'],
+    [['this', 'CamelCase'], 'tHIS'],
+    [['th', 'CamelCase'], 'tH'],
+    [['thisISMYTEST', 'CamelCase'], 'thisISMYTEST'],
   ]);
 
   for (const [key, value] of convertToCaseExpectedReturns.entries()) {
