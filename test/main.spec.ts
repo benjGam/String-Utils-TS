@@ -70,3 +70,16 @@ for (const [input, output] of blendIrrelevantStringsInRelevantOnes.entries()) {
     );
   });
 }
+
+const containsConsiderableCharSequence = new Map<string[], boolean>([
+  [['This', 'is', 'my', 'test'], true],
+  [[' ', '    t ', '    h '], false],
+  [['t', 'h', 'i'], false],
+  [['    ', '  '], false],
+]);
+
+for (const [input, output] of containsConsiderableCharSequence.entries()) {
+  test(`Should return '${output}' for '${input}'`, () => {
+    expect(StringUtils.containsConsiderableCharSequence(input)).toBe(output);
+  });
+}
