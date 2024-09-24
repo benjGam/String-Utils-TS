@@ -1,6 +1,6 @@
 export default abstract class Case {
-  private _matcher: RegExp;
-  private _splitter: RegExp | string;
+  protected abstract _matcher: RegExp;
+  protected abstract _splitter: RegExp | string;
 
   public abstract basicConversionReturnFn(
     splittedByCase: string[],
