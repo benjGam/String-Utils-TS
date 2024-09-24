@@ -4,6 +4,9 @@ import StringUtilsWord from '../word';
 import { StringUtils } from '../main';
 
 export default class CamelCase extends Case {
+  protected _matcher = /^[a-z]+(?:[A-Z][a-z]+)*$/;
+  protected _splitter = /([A-Z]+[a-z]*)/;
+
   public basicConversionReturnFn(
     splittedByCase: string[],
     str: string,
