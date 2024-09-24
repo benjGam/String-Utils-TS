@@ -5,7 +5,9 @@ export default class JestUtils {
   ): void {
     for (const [input, output] of expectedReturns.entries()) {
       test(`[${functionToTest.name}] Should return '${expectedReturns}'`, () => {
-        expect(input)[typeof output === 'object' ? 'toEqual' : 'toBe'](output); // if output is a complexe object use 'toEqual' otherwise 'toBe'
+        expect(functionToTest(input))[
+          typeof output === 'object' ? 'toEqual' : 'toBe'
+        ](output); // if output is a complexe object use 'toEqual' otherwise 'toBe'
       });
     }
   }
