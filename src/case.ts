@@ -117,7 +117,6 @@ export default class StringUtilsCase {
    * str: thisIsMyExample
    * returns: ThisIsMyExample
    */
-
   public static toPascalCase(str: string): string {
     return this.convertToCaseLogic('PascalCase', str);
   }
