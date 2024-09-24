@@ -64,6 +64,7 @@ describe('Casing operation', () => {
     ['this is my test', 'thisIsMyTest'],
     ['ThisIsMyTest', 'thisIsMyTest'],
     ['This Is My Test', 'thisIsMyTest'],
+    ['thisISMYTEST', 'thisISMYTEST'],
   ]);
   for (const [input, output] of toCamelCaseExpectedReturns.entries()) {
     test(`Should return '${output}' for '${input}'`, () => {
@@ -82,6 +83,7 @@ describe('Casing operation', () => {
     ['this is my test', 'ThisIsMyTest'],
     ['ThisIsMyTest', 'ThisIsMyTest'],
     ['This Is My Test', 'ThisIsMyTest'],
+    ['thisISMYTEST', 'thisISMYTEST'],
   ]);
   for (const [input, output] of toPascalCaseExpectedReturns.entries()) {
     test(`Should return '${output}' for '${input}'`, () => {
@@ -100,6 +102,8 @@ describe('Casing operation', () => {
     ['this is my test', 'this_is_my_test'],
     ['ThisIsMyTest', 'this_is_my_test'],
     ['This Is My Test', 'this_is_my_test'],
+    ['thisISMYTEST', 'thisISMYTEST'],
+    ['this   _ is _ my _ test', 'this_is_my_test'],
   ]);
   for (const [input, output] of toSnakeCaseExpectedReturns.entries()) {
     test(`Should return '${output}' for '${input}'`, () => {
