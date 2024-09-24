@@ -1,5 +1,5 @@
 import { StringUtils } from './main';
-import StringUtilsWord from './word-ending-utils';
+import StringUtilsWord from './word';
 
 /**
  * This interface provide a structure for literal objects

@@ -1,4 +1,4 @@
-import StringUtilsWord, { IWordEnding } from '../src/word-ending-utils';
+import StringUtilsWord, { IWordEnding } from '../src/word';
 
 describe('Get word ending', () => {
   const getWordEndingReturns = new Map<string, string>([
