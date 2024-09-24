@@ -143,17 +143,15 @@ export default class StringUtilsCase {
       (caseInstance: Case) => caseInstance.name == toCase,
     );
 
-    const [noBlendReturnFn, blendedReturnFn] = [
-      correspondantKnowCase.basicConversionReturnFn,
-      correspondantKnowCase.blendedConversionReturnFn,
-    ];
-
     if (!StringUtils.isConsiderableCharSequence(str)) return str;
 
     if (!str.includes(' ')) {
       if (!this.determineCase(str)) return str;
 
-      return noBlendReturnFn(this.splitByCase(str), str);
+      return correspondantKnowCase.basicConversionReturnFn(
+        this.splitByCase(str),
+        str,
+      );
     }
 
     const removedBlankChars = StringUtils.removeBlankChars(str);
@@ -161,7 +159,7 @@ export default class StringUtilsCase {
       return removedBlankChars;
     }
 
-    return blendedReturnFn(
+    return correspondantKnowCase.blendedConversionReturnFn(
       this.splitByCase(str),
       StringUtils.blendIrrelevantStringsInRelevantOnes(str),
       str,
