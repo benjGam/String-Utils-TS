@@ -107,30 +107,140 @@ export default class StringUtilsCase {
    * returns: this_is_a_test
    */
   public static convertToCase(str: string, caseToConvert: Case): string {
-    if (!StringUtils.isConsiderableCharSequence(str)) return str;
-
-    const splittedByCaseString = this.splitByCase(str);
-    if (splittedByCaseString.length == 1) return str; // Case was unsucessfully determinated
-
     switch (caseToConvert) {
       case 'lowerCase':
-        return splittedByCaseString.join('').toLowerCase();
+        return str.toLowerCase();
       case 'upperCase':
-        return splittedByCaseString.join('').toUpperCase();
+        return str.toUpperCase();
       case 'camelCase':
-        return splittedByCaseString
-          .map((subSequence, index) =>
-            index == 0
-              ? subSequence.toLowerCase()
-              : StringUtilsWord.formatWord(subSequence),
-          )
-          .join('');
+        return this.toCamelCase(str);
       case 'pascalCase':
-        return splittedByCaseString
-          .map((subSequence) => StringUtilsWord.formatWord(subSequence))
-          .join('');
+        return this.toPascalCase(str);
       case 'snakeCase':
-        return splittedByCaseString.join('_').toLowerCase();
+        return this.toSnakeCase(str);
     }
+  }
+
+  /**
+   * Returns a given string converted to camelCase
+   *
+   * @param {string} str - The string to convert
+   *
+   * @example
+   * str: ThisIsMyExample
+   * returns: thisIsMyExample
+   * @example
+   * str: thisIsMyExample
+   * returns: thisIsMyExample
+   */
+  public static toCamelCase(str: string): string {
+    if (!StringUtils.isConsiderableCharSequence(str)) return str;
+
+    if (!str.includes(' ')) {
+      if (!this.determineCase(str)) return str;
+      const splittedByCase = this.splitByCase(str);
+
+      return splittedByCase
+        .map((subSequence, index) =>
+          index == 0
+            ? subSequence.toLowerCase()
+            : StringUtilsWord.formatWord(subSequence),
+        )
+        .join('');
+    }
+
+    const removedBlankChars = StringUtils.removeBlankChars(str);
+    if (this.determineCase(removedBlankChars).name == 'camelCase') {
+      return removedBlankChars;
+    }
+
+    const blended = StringUtils.blendIrrelevantStringsInRelevantOnes(str);
+
+    return (blended.length < 2 ? this.splitByCase(removedBlankChars) : blended)
+      .map((subSequence, index) =>
+        index == 0
+          ? subSequence.toLowerCase()
+          : StringUtilsWord.formatWord(subSequence),
+      )
+      .join('');
+  }
+
+  /**
+   * Returns a given string converted to PamelCase
+   *
+   * @param {string} str - The string to convert
+   *
+   * @example
+   * str: ThisIsMyExample
+   * returns: ThisIsMyExample
+   * @example
+   * str: thisIsMyExample
+   * returns: ThisIsMyExample
+   */
+
+  public static toPascalCase(str: string): string {
+    if (!StringUtils.isConsiderableCharSequence(str)) return str;
+
+    if (!str.includes(' ')) {
+      if (!this.determineCase(str)) return str;
+      const splittedByCase = this.splitByCase(str);
+
+      return StringUtils.removeBlankChars(
+        !StringUtils.containsConsiderableCharSequence(splittedByCase)
+          ? StringUtilsWord.formatWord(str)
+          : StringUtilsWord.formatWords(splittedByCase),
+      );
+    }
+
+    const removedBlankChars = StringUtils.removeBlankChars(str);
+    if (this.determineCase(removedBlankChars).name == 'pascalCase') {
+      return removedBlankChars;
+    }
+
+    const blended = StringUtils.blendIrrelevantStringsInRelevantOnes(str);
+
+    return StringUtils.removeBlankChars(
+      blended.length < 2
+        ? StringUtilsWord.formatWord(str)
+        : StringUtilsWord.formatWords(blended),
+    );
+  }
+
+  /**
+   * Returns a given string converted to snakeCase
+   *
+   * @param {string} str - The string to convert
+   *
+   * @example
+   * str: ThisIsMyExample
+   * returns: this_is_my_example
+   * @example
+   * str: thisIsMyExample
+   * returns: this_is_my_example
+   */
+  public static toSnakeCase(str: string): string {
+    if (!StringUtils.isConsiderableCharSequence(str)) return str;
+
+    if (!str.includes(' ')) {
+      if (!this.determineCase(str)) return str;
+      const splittedByCase = this.splitByCase(
+        StringUtils.removeBlankChars(str),
+      );
+
+      return splittedByCase.join('_').toLowerCase();
+    }
+
+    const removedBlankChars = StringUtils.removeBlankChars(str);
+    if (this.determineCase(removedBlankChars).name == 'snakeCase') {
+      return removedBlankChars;
+    }
+
+    const blended = StringUtils.blendIrrelevantStringsInRelevantOnes(str);
+
+    return blended.length <= 2
+      ? this.splitByCase(blended.join('')).join('_').toLowerCase()
+      : StringUtilsWord.normalizeSpacesBetweenWords(
+          blended.join('_'),
+        ).toLowerCase();
   }
 }

@@ -52,4 +52,62 @@ describe('Casing operation', () => {
       expect(StringUtilsCase.convertToCase(...key)).toBe(value);
     });
   }
+
+  const toCamelCaseExpectedReturns = new Map<string, string>([
+    ['thisIsMyTest', 'thisIsMyTest'],
+    ['ThisIsMyTest', 'thisIsMyTest'],
+    ['', ''],
+    ['th', 'tH'],
+    ['    th', 'tH'],
+    ['thisIsM      y Tes t', 'thisIsMyTest'],
+    ['this_is_my_test', 'thisIsMyTest'],
+    ['this is my test', 'thisIsMyTest'],
+    ['ThisIsMyTest', 'thisIsMyTest'],
+    ['This Is My Test', 'thisIsMyTest'],
+    ['thisISMYTEST', 'thisISMYTEST'],
+  ]);
+  for (const [input, output] of toCamelCaseExpectedReturns.entries()) {
+    test(`Should return '${output}' for '${input}'`, () => {
+      expect(StringUtilsCase.toCamelCase(input)).toBe(output);
+    });
+  }
+
+  const toPascalCaseExpectedReturns = new Map<string, string>([
+    ['thisIsMyTest', 'ThisIsMyTest'],
+    ['ThisIsMyTest', 'ThisIsMyTest'],
+    ['', ''],
+    ['th', 'Th'],
+    ['    th', 'Th'],
+    ['thisIsM      y Tes t', 'ThisIsMyTest'],
+    ['this_is_my_test', 'ThisIsMyTest'],
+    ['this is my test', 'ThisIsMyTest'],
+    ['ThisIsMyTest', 'ThisIsMyTest'],
+    ['This Is My Test', 'ThisIsMyTest'],
+    ['thisISMYTEST', 'thisISMYTEST'],
+  ]);
+  for (const [input, output] of toPascalCaseExpectedReturns.entries()) {
+    test(`Should return '${output}' for '${input}'`, () => {
+      expect(StringUtilsCase.toPascalCase(input)).toBe(output);
+    });
+  }
+
+  const toSnakeCaseExpectedReturns = new Map<string, string>([
+    ['thisIsMyTest', 'this_is_my_test'],
+    ['ThisIsMyTest', 'this_is_my_test'],
+    ['', ''],
+    ['th', 't_h'],
+    ['    th', 't_h'],
+    ['thisIsM      y Tes t', 'this_is_my_test'],
+    ['this_is_my_test', 'this_is_my_test'],
+    ['this is my test', 'this_is_my_test'],
+    ['ThisIsMyTest', 'this_is_my_test'],
+    ['This Is My Test', 'this_is_my_test'],
+    ['thisISMYTEST', 'thisISMYTEST'],
+    ['this   _ is _ my _ test', 'this_is_my_test'],
+  ]);
+  for (const [input, output] of toSnakeCaseExpectedReturns.entries()) {
+    test(`Should return '${output}' for '${input}'`, () => {
+      expect(StringUtilsCase.toSnakeCase(input)).toBe(output);
+    });
+  }
 });
