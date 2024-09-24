@@ -70,4 +70,22 @@ describe('Casing operation', () => {
       expect(StringUtilsCase.toCamelCase(input)).toBe(output);
     });
   }
+
+  const toPascalCaseExpectedReturns = new Map<string, string>([
+    ['thisIsMyTest', 'ThisIsMyTest'],
+    ['ThisIsMyTest', 'ThisIsMyTest'],
+    ['', ''],
+    ['th', 'Th'],
+    ['    th', 'tH'],
+    ['thisIsM      y Tes t', 'ThisIsMyTest'],
+    ['this_is_my_test', 'ThisIsMyTest'],
+    ['this is my test', 'ThisIsMyTest'],
+    ['ThisIsMyTest', 'ThisIsMyTest'],
+    ['This Is My Test', 'ThisIsMyTest'],
+  ]);
+  for (const [input, output] of toPascalCaseExpectedReturns.entries()) {
+    test(`Should return '${output}' for '${input}'`, () => {
+      expect(StringUtilsCase.toPascalCase(input)).toBe(output);
+    });
+  }
 });
