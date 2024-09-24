@@ -173,4 +173,44 @@ export default class StringUtilsCase {
       )
       .join('');
   }
+
+  /**
+   * Returns a given string converted to PamelCase
+   *
+   * @param {string} str - The string to convert
+   *
+   * @example
+   * str: ThisIsMyExample
+   * returns: ThisIsMyExample
+   * @example
+   * str: thisIsMyExample
+   * returns: ThisIsMyExample
+   */
+
+  public static toPascalCase(str: string): string {
+    if (!StringUtils.isConsiderableCharSequence(str)) return str;
+
+    if (!str.includes(' ')) {
+      const splittedByCase = this.splitByCase(str);
+
+      return StringUtils.removeBlankChars(
+        !StringUtils.containsConsiderableCharSequence(splittedByCase)
+          ? StringUtilsWord.formatWord(str)
+          : StringUtilsWord.formatWords(splittedByCase),
+      );
+    }
+
+    const removedBlankChars = StringUtils.removeBlankChars(str);
+    if (this.determineCase(removedBlankChars).name == 'pascalCase') {
+      return removedBlankChars;
+    }
+
+    const blended = StringUtils.blendIrrelevantStringsInRelevantOnes(str);
+
+    return StringUtils.removeBlankChars(
+      blended.length < 2
+        ? StringUtilsWord.formatWord(str)
+        : StringUtilsWord.formatWords(blended),
+    );
+  }
 }
