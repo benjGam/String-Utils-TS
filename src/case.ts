@@ -107,30 +107,17 @@ export default class StringUtilsCase {
    * returns: this_is_a_test
    */
   public static convertToCase(str: string, caseToConvert: Case): string {
-    if (!StringUtils.isConsiderableCharSequence(str)) return str;
-
-    const splittedByCaseString = this.splitByCase(str);
-    if (splittedByCaseString.length == 1) return str; // Case was unsucessfully determinated
-
     switch (caseToConvert) {
       case 'lowerCase':
-        return splittedByCaseString.join('').toLowerCase();
+        return str.toLowerCase();
       case 'upperCase':
-        return splittedByCaseString.join('').toUpperCase();
+        return str.toUpperCase();
       case 'camelCase':
-        return splittedByCaseString
-          .map((subSequence, index) =>
-            index == 0
-              ? subSequence.toLowerCase()
-              : StringUtilsWord.formatWord(subSequence),
-          )
-          .join('');
+        return this.toCamelCase(str);
       case 'pascalCase':
-        return splittedByCaseString
-          .map((subSequence) => StringUtilsWord.formatWord(subSequence))
-          .join('');
+        return this.toPascalCase(str);
       case 'snakeCase':
-        return splittedByCaseString.join('_').toLowerCase();
+        return this.toSnakeCase(str);
     }
   }
 
@@ -149,14 +136,18 @@ export default class StringUtilsCase {
   public static toCamelCase(str: string): string {
     if (!StringUtils.isConsiderableCharSequence(str)) return str;
 
-    if (!str.includes(' '))
-      return this.splitByCase(str)
+    if (!str.includes(' ')) {
+      if (!this.determineCase(str)) return str;
+      const splittedByCase = this.splitByCase(str);
+
+      return splittedByCase
         .map((subSequence, index) =>
           index == 0
             ? subSequence.toLowerCase()
             : StringUtilsWord.formatWord(subSequence),
         )
         .join('');
+    }
 
     const removedBlankChars = StringUtils.removeBlankChars(str);
     if (this.determineCase(removedBlankChars).name == 'camelCase') {
@@ -191,6 +182,7 @@ export default class StringUtilsCase {
     if (!StringUtils.isConsiderableCharSequence(str)) return str;
 
     if (!str.includes(' ')) {
+      if (!this.determineCase(str)) return str;
       const splittedByCase = this.splitByCase(str);
 
       return StringUtils.removeBlankChars(
@@ -230,6 +222,7 @@ export default class StringUtilsCase {
     if (!StringUtils.isConsiderableCharSequence(str)) return str;
 
     if (!str.includes(' ')) {
+      if (!this.determineCase(str)) return str;
       const splittedByCase = this.splitByCase(str);
 
       return splittedByCase.join('_').toLowerCase();
