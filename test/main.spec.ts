@@ -28,3 +28,19 @@ for (const key of replaceAtExpectedReturns.keys()) {
     );
   });
 }
+
+const isConsiderableCharSequenceExpectedReturns = new Map<string, boolean>([
+  ['       t', false],
+  ['of', true],
+  ['    of', true],
+  ['of      ', true],
+  ['f     ', false],
+]);
+for (const [
+  input,
+  output,
+] of isConsiderableCharSequenceExpectedReturns.entries()) {
+  test(`Should return '${output}' for '${input}'`, () => {
+    expect(StringUtils.isConsiderableCharSequence(input)).toBe(output);
+  });
+}
