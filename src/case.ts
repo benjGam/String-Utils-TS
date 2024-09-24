@@ -139,7 +139,7 @@ export default class StringUtilsCase {
   }
 
   private static convertToCaseLogic(toCase: CaseName, str: string): string {
-    const correspondantKnowCase = knownCases.find(
+    const correspondantKnownCase = knownCases.find(
       (caseInstance: Case) => caseInstance.name == toCase,
     );
 
@@ -150,7 +150,7 @@ export default class StringUtilsCase {
       // str do not need blending operation
       if (!this.determineCase(str)) return str;
 
-      return correspondantKnowCase.basicConversionReturnFn(
+      return correspondantKnownCase.basicConversionReturnFn(
         this.splitByCase(str),
         str,
       ); //Apply stored behavior of correspondantKnownCase and return the processed value
@@ -164,7 +164,7 @@ export default class StringUtilsCase {
       return removedBlankChars;
     }
 
-    return correspondantKnowCase.blendedConversionReturnFn(
+    return correspondantKnownCase.blendedConversionReturnFn(
       this.splitByCase(str),
       StringUtils.blendIrrelevantStringsInRelevantOnes(str),
       str,
