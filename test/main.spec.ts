@@ -56,3 +56,17 @@ for (const [input, output] of removeBlankCharsExpectedReturns.entries()) {
     expect(StringUtils.removeBlankChars(input)).toBe(output);
   });
 }
+
+const blendIrrelevantStringsInRelevantOnes = new Map<string, string[]>([
+  ['This    is my   ex a m p l   e', ['This', 'is', 'my', 'example']],
+  ['T h i s m y e x a m p l e', ['Thisismyexample']],
+  ['This is    my ex  a  m pl e   ', ['This', 'is', 'my', 'exam', 'ple']],
+]);
+
+for (const [input, output] of blendIrrelevantStringsInRelevantOnes.entries()) {
+  test(`Should return '${output}' for '${input}'`, () => {
+    expect(StringUtils.blendIrrelevantStringsInRelevantOnes(input)).toEqual(
+      output,
+    );
+  });
+}
