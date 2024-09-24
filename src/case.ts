@@ -149,25 +149,23 @@ export default class StringUtilsCase {
   public static toCamelCase(str: string): string {
     if (!StringUtils.isConsiderableCharSequence(str)) return str;
 
-    if (str.includes(' ')) {
-      const removedBlankChars = StringUtils.removeBlankChars(str);
-      if (this.determineCase(removedBlankChars).name == 'camelCase') {
-        return removedBlankChars;
-      }
-      const blended = StringUtils.blendIrrelevantStringsInRelevantOnes(str);
-
-      return (
-        blended.length < 2 ? this.splitByCase(removedBlankChars) : blended
-      )
+    if (!str.includes(' '))
+      return this.splitByCase(str)
         .map((subSequence, index) =>
           index == 0
             ? subSequence.toLowerCase()
             : StringUtilsWord.formatWord(subSequence),
         )
         .join('');
+
+    const removedBlankChars = StringUtils.removeBlankChars(str);
+    if (this.determineCase(removedBlankChars).name == 'camelCase') {
+      return removedBlankChars;
     }
 
-    return this.splitByCase(str)
+    const blended = StringUtils.blendIrrelevantStringsInRelevantOnes(str);
+
+    return (blended.length < 2 ? this.splitByCase(removedBlankChars) : blended)
       .map((subSequence, index) =>
         index == 0
           ? subSequence.toLowerCase()
