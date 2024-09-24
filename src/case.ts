@@ -133,4 +133,46 @@ export default class StringUtilsCase {
         return splittedByCaseString.join('_').toLowerCase();
     }
   }
+
+  /**
+   * Returns a given string converted to camelCase
+   *
+   * @param {string} str - The string to convert
+   *
+   * @example
+   * str: ThisIsMyExample
+   * returns: thisIsMyExample
+   * @example
+   * str: thisIsMyExample
+   * returns: thisIsMyExample
+   */
+  public static toCamelCase(str: string): string {
+    if (!StringUtils.isConsiderableCharSequence(str)) return str;
+
+    if (str.includes(' ')) {
+      const removedBlankChars = StringUtils.removeBlankChars(str);
+      if (this.determineCase(removedBlankChars).name == 'camelCase') {
+        return removedBlankChars;
+      }
+      const blended = StringUtils.blendIrrelevantStringsInRelevantOnes(str);
+
+      return (
+        blended.length < 2 ? this.splitByCase(removedBlankChars) : blended
+      )
+        .map((subSequence, index) =>
+          index == 0
+            ? subSequence.toLowerCase()
+            : StringUtilsWord.formatWord(subSequence),
+        )
+        .join('');
+    }
+
+    return this.splitByCase(str)
+      .map((subSequence, index) =>
+        index == 0
+          ? subSequence.toLowerCase()
+          : StringUtilsWord.formatWord(subSequence),
+      )
+      .join('');
+  }
 }
