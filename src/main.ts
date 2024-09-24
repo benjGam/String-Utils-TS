@@ -10,6 +10,7 @@ export class StringUtils {
   public static isBlank(str: string): boolean {
     return str.trim().replaceAll(' ', '').length == 0;
   }
+
   /**
    * Returns a boolean indicating if given string is atleast 2 lengthed string
    *
@@ -26,6 +27,32 @@ export class StringUtils {
    */
   public static isConsiderableCharSequence(str: string): boolean {
     return str.trim().replaceAll(' ', '').length >= 2;
+  }
+
+  /**
+   * Returns a boolean indicating if a given string table contains atleast one considerable subsequence
+   *
+   * @param {string[]} stringTable - Should be a table of string
+   *
+   * @example
+   * stringTable: ['This', 'is', 'my', 'test']
+   * retunrs: true
+   * @example
+   * stringTable: [' ', ' ', ' ']
+   * retunrs: false
+   * @example
+   * stringTable: ['t', 'h', 'i']
+   * retruns: false
+   */
+  public static containsConsiderableCharSequence(
+    stringTable: string[],
+  ): boolean {
+    if (this.isBlank(stringTable.join(''))) return false;
+    return (
+      stringTable.find((subsequence) =>
+        this.isConsiderableCharSequence(subsequence),
+      ) != undefined
+    );
   }
 
   /**
