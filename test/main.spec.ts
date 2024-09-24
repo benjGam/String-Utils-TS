@@ -59,7 +59,7 @@ for (const [input, output] of removeBlankCharsExpectedReturns.entries()) {
 
 const blendIrrelevantStringsInRelevantOnes = new Map<string, string[]>([
   ['This    is my   ex a m p l   e', ['This', 'is', 'my', 'example']],
-  ['T h i s m y e x a m p l e', ['Thisismyexample']],
+  ['T h i s i s m y e x a m p l e', ['Thisismyexample']],
   ['This is    my ex  a  m pl e   ', ['This', 'is', 'my', 'exam', 'ple']],
 ]);
 
