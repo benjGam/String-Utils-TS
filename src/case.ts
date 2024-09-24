@@ -230,7 +230,7 @@ export default class StringUtilsCase {
       return splittedByCase.join('_').toLowerCase();
     }
 
-    const removedBlankChars = StringUtils.removeBlankChars(str.toLowerCase());
+    const removedBlankChars = StringUtils.removeBlankChars(str);
     if (this.determineCase(removedBlankChars).name == 'snakeCase') {
       return removedBlankChars;
     }
