@@ -213,4 +213,37 @@ export default class StringUtilsCase {
         : StringUtilsWord.formatWords(blended),
     );
   }
+
+  /**
+   * Returns a given string converted to snakeCase
+   *
+   * @param {string} str - The string to convert
+   *
+   * @example
+   * str: ThisIsMyExample
+   * returns: this_is_my_example
+   * @example
+   * str: thisIsMyExample
+   * returns: this_is_my_example
+   */
+  public static toSnakeCase(str: string): string {
+    if (!StringUtils.isConsiderableCharSequence(str)) return str;
+
+    if (!str.includes(' ')) {
+      const splittedByCase = this.splitByCase(str);
+
+      return splittedByCase.join('_').toLowerCase();
+    }
+
+    const removedBlankChars = StringUtils.removeBlankChars(str);
+    if (this.determineCase(removedBlankChars).name == 'snakeCase') {
+      return removedBlankChars;
+    }
+
+    const blended = StringUtils.blendIrrelevantStringsInRelevantOnes(str);
+
+    return (blended.length < 2 ? this.splitByCase(str) : blended)
+      .join('_')
+      .toLowerCase();
+  }
 }
