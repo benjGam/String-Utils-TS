@@ -56,6 +56,29 @@ export class StringUtils {
   }
 
   /**
+   * Returns a boolean indicating if a given string table contains only considerable subsequence
+   *
+   * @param {string[]} stringTable - Should be a table of string
+   *
+   * @example
+   * stringTable: ['This', 'is', 'my', 'example']
+   * returns: true
+   * @example
+   * stringTable: ['This', 'i', 's', 'my', 'example']
+   * returns: false
+   */
+  public static containsOnlyConsiderableCharSequence(
+    stringTable: string[],
+  ): boolean {
+    if (this.isBlank(stringTable.join(''))) return false;
+    return (
+      stringTable.find(
+        (subsequence) => !this.isConsiderableCharSequence(subsequence),
+      ) == undefined
+    );
+  }
+
+  /**
    * Replace a subsequent string at a given position by another string in a given string
    *
    * @param {string} str - The string to replace in
