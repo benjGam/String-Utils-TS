@@ -2,8 +2,15 @@ export default abstract class Case {
   private _matcher: RegExp;
   private _splitter: RegExp | string;
 
-  public abstract basicConversionReturnFn(): string;
-  public abstract blendedConversionReturnFn(): string;
+  public abstract basicConversionReturnFn(
+    splittedByCase: string[],
+    str: string,
+  ): string;
+  public abstract blendedConversionReturnFn(
+    splittedByCase: string[],
+    blended: string[],
+    str: string,
+  ): string;
 
   public get name(): string {
     return this.constructor.name;
