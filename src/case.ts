@@ -143,19 +143,24 @@ export default class StringUtilsCase {
       (caseInstance: Case) => caseInstance.name == toCase,
     );
 
+    // do not apply any process overload for nothing
     if (!StringUtils.isConsiderableCharSequence(str)) return str;
 
     if (!str.includes(' ')) {
+      // str do not need blending operation
       if (!this.determineCase(str)) return str;
 
       return correspondantKnowCase.basicConversionReturnFn(
         this.splitByCase(str),
         str,
-      );
+      ); //Apply stored behavior of correspondantKnownCase and return the processed value
     }
+
+    // str need blending operation
 
     const removedBlankChars = StringUtils.removeBlankChars(str);
     if (this.determineCase(removedBlankChars).name == toCase) {
+      //str is per any chance alraedy cased as wanted but needed to be cleanedFrom any blank chars
       return removedBlankChars;
     }
 
@@ -163,6 +168,6 @@ export default class StringUtilsCase {
       this.splitByCase(str),
       StringUtils.blendIrrelevantStringsInRelevantOnes(str),
       str,
-    );
+    ); //Apply stored behavior of correspondantKnownCase and return the processed value
   }
 }
