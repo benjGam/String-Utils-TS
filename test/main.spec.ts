@@ -76,6 +76,7 @@ const containsConsiderableCharSequence = new Map<string[], boolean>([
   [[' ', '    t ', '    h '], false],
   [['t', 'h', 'i'], false],
   [['    ', '  '], false],
+  [['T', 'h', 'is'], true],
 ]);
 
 for (const [input, output] of containsConsiderableCharSequence.entries()) {
