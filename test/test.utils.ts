@@ -12,11 +12,15 @@ export default class JestRunner {
   public runBasicTests(expectedReturns: Map<any, any>, fn: Function): void {
     this.checkInvokation(fn);
 
+    const isMultiArgs = this.checkTypesLengthInInput(
+      Array.from(expectedReturns.keys())[0],
+    );
+
     for (const [input, output] of expectedReturns.entries()) {
       test(`[${fn.name}] Should return '${output} for '${input}''`, () => {
         expect(
           this._classToInvoke[fn.name](
-            ...(this.checkTypesLengthInInput(input) ? input : [input]),
+            ...(isMultiArgs ? input.flat() : [input]),
           ),
         )[typeof output === 'object' ? 'toEqual' : 'toBe'](output); // if output is a complexe object use 'toEqual' otherwise 'toBe'
       });
@@ -24,10 +28,7 @@ export default class JestRunner {
   }
 
   private checkTypesLengthInInput(input: any) {
-    return (
-      Array.isArray(input) &&
-      Array.from(new Set(input.map((type) => typeof type)).values()).length > 1
-    );
+    return Array.isArray(input[0]);
   }
 
   private checkInvokation(fn: Function) {
