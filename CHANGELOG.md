@@ -7,6 +7,12 @@
     - `SnakeCase` class implement logic of previous correspondant object.
     - `LowerCase` class implement logic of previous correspondant object.
     - `UpperCase` class implement logic of previous correspondant object.
+  - `StringUtils (main.ts)`
+    - `isConsiderableCharSequence(str: string): boolean` method has been implemented and used to check if a given string contains atleast 2 chars (excepted blanks ones).
+    - `containsConsiderableCharSequence(stringTable: string[]): boolean` method has been implemented and used to check if a given table of string contains atleast one considerable (determined by `isConsiderableCharSequence` criterias) element.
+    - `containsOnlyConsiderableCharSequences(stringTable: string[]): boolean` method has been implemented and used to check if a given table of string contains only considerable (determined by `isConsiderableCharSequence` criterias) elements.
+    - `removeBlankChars(str): string` method has been implemented and could be use to remove blank chars from a given string.
+    - `blendIrrelevantStringsInRelevantOnes(str: string): string[]` method has been implemented and should be used to blend orphan chars (a char adjacent to blank chars) to the last considerable subsequence of char (determined by `isConsiderableCharSequence` criterias) in a given string.
 
 # Version 2.2.0
 
