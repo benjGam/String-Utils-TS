@@ -9,16 +9,36 @@ export default class JestRunner {
     this._classToInvoke = classToInvoke;
   }
 
-  public runBasicTests(fn: Function, expectedReturns: Map<any, any>): void {
+  public runBasicTests(
+    fn: Function,
+    expectedReturns: Map<any, any>,
+    inputPropertiesToTestName: string = null,
+  ): void {
     this.checkInvokation(fn);
 
     for (const [input, output] of expectedReturns.entries()) {
       test(`[${fn.name}] Should return '${output} for '${input}''`, () => {
-        expect(
-          this._classToInvoke[fn.name](
-            ...(typeof input == 'function' ? input() : [input]),
-          ),
-        )[typeof output === 'object' ? 'toEqual' : 'toBe'](output); // if output is a complexe object use 'toEqual' otherwise 'toBe'
+        if (inputPropertiesToTestName)
+          if (output) {
+            expect(
+              this._classToInvoke[fn.name](
+                ...(typeof input == 'function' ? input() : [input]),
+              )[inputPropertiesToTestName],
+            )[typeof output === 'object' ? 'toEqual' : 'toBe'](output);
+          } else {
+            expect(
+              this._classToInvoke[fn.name](
+                ...(typeof input == 'function' ? input() : [input]),
+              ),
+            )[typeof output === 'object' ? 'toEqual' : 'toBe'](output);
+          }
+        // if output is a complexe object use 'toEqual' otherwise 'toBe'
+        else
+          expect(
+            this._classToInvoke[fn.name](
+              ...(typeof input == 'function' ? input() : [input]),
+            ),
+          )[typeof output === 'object' ? 'toEqual' : 'toBe'](output); // if output is a complexe object use 'toEqual' otherwise 'toBe'
       });
     }
   }
