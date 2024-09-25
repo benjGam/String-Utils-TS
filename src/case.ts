@@ -1,63 +1,32 @@
-import StringUtilsWord from './word-ending-utils';
-
-/**
- * This interface provide a structure for literal objects
- * It brings reliable way to add unmanaged cases without any other code writing
- *
- * @interface ICase
- * @field {string} name is used to represent a matcher & splitter for case
- * @field {RegExp} matcher is used with Regex operations to check if a given string match
- * @field {RegExp | string} splitter is used to split given string who match `matcher`
- *
- */
-interface ICase {
-  name: Case;
-  matcher: RegExp;
-  splitter: RegExp | string;
-}
+import CamelCase from './case/camel-case';
+import Case from './case/Case';
+import LowerCase from './case/lower-case';
+import PascalCase from './case/pascal-case';
+import SnakeCase from './case/snake-case';
+import UpperCase from './case/upper-case';
+import { StringUtils } from './main';
 
 /**
  * This type is used to ensure case selection is reliable
  */
-
-export type Case =
-  | 'snakeCase'
-  | 'pascalCase'
-  | 'lowerCase'
-  | 'upperCase'
-  | 'camelCase';
+export type CaseName =
+  | 'SnakeCase'
+  | 'PascalCase'
+  | 'LowerCase'
+  | 'UpperCase'
+  | 'CamelCase';
 
 /**
  * This table store few basics cases.
  *
  * @method StringUtilsCase.determineCase <- Use it
  */
-const knownCases: ICase[] = [
-  {
-    name: 'snakeCase',
-    matcher: /(\w+)_(\w+)/,
-    splitter: '_',
-  },
-  {
-    name: 'pascalCase',
-    matcher: /^[A-Z][a-z]+(?:[A-Z][a-z]+)*$/,
-    splitter: /([A-Z]+[a-z]*)/,
-  },
-  {
-    name: 'lowerCase',
-    matcher: /^[a-z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?\s]*$/,
-    splitter: '',
-  },
-  {
-    name: 'upperCase',
-    matcher: /^[A-Z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?\s]*$/,
-    splitter: '',
-  },
-  {
-    name: 'camelCase',
-    matcher: /^[a-z]+(?:[A-Z][a-z]+)*$/,
-    splitter: /([A-Z]+[a-z]*)/,
-  },
+const knownCases: Case[] = [
+  new SnakeCase(),
+  new PascalCase(),
+  new LowerCase(),
+  new UpperCase(),
+  new CamelCase(),
 ];
 
 export default class StringUtilsCase {
@@ -68,7 +37,7 @@ export default class StringUtilsCase {
    *
    * @returns {ICase} - The case of given string
    */
-  public static determineCase(str: string): ICase | undefined {
+  public static determineCase(str: string): Case | undefined {
     return knownCases.find((caseObject) => caseObject.matcher.test(str));
   }
 
@@ -105,31 +74,99 @@ export default class StringUtilsCase {
    * case: snakeCase
    * returns: this_is_a_test
    */
-  public static convertToCase(str: string, caseToConvert: Case): string {
-    if (str.trim().replaceAll(' ', '').length < 2) return str;
-
-    const splittedByCaseString = this.splitByCase(str);
-    if (splittedByCaseString.length == 1) return str; // Case was unsucessfully determinated
-
+  public static convertToCase(str: string, caseToConvert: CaseName): string {
     switch (caseToConvert) {
-      case 'lowerCase':
-        return splittedByCaseString.join('').toLowerCase();
-      case 'upperCase':
-        return splittedByCaseString.join('').toUpperCase();
-      case 'camelCase':
-        return splittedByCaseString
-          .map((subSequence, index) =>
-            index == 0
-              ? subSequence.toLowerCase()
-              : StringUtilsWord.formatWord(subSequence),
-          )
-          .join('');
-      case 'pascalCase':
-        return splittedByCaseString
-          .map((subSequence) => StringUtilsWord.formatWord(subSequence))
-          .join('');
-      case 'snakeCase':
-        return splittedByCaseString.join('_').toLowerCase();
+      case 'LowerCase':
+        return this.convertToCaseLogic('LowerCase', str);
+      case 'UpperCase':
+        return this.convertToCaseLogic('UpperCase', str);
+      case 'CamelCase':
+        return this.convertToCaseLogic('CamelCase', str);
+      case 'PascalCase':
+        return this.convertToCaseLogic('PascalCase', str);
+      case 'SnakeCase':
+        return this.convertToCaseLogic('SnakeCase', str);
     }
+  }
+
+  /**
+   * Returns a given string converted to camelCase
+   *
+   * @param {string} str - The string to convert
+   *
+   * @example
+   * str: ThisIsMyExample
+   * returns: thisIsMyExample
+   * @example
+   * str: thisIsMyExample
+   * returns: thisIsMyExample
+   */
+  public static toCamelCase(str: string): string {
+    return this.convertToCaseLogic('CamelCase', str);
+  }
+
+  /**
+   * Returns a given string converted to PamelCase
+   *
+   * @param {string} str - The string to convert
+   *
+   * @example
+   * str: ThisIsMyExample
+   * returns: ThisIsMyExample
+   * @example
+   * str: thisIsMyExample
+   * returns: ThisIsMyExample
+   */
+  public static toPascalCase(str: string): string {
+    return this.convertToCaseLogic('PascalCase', str);
+  }
+
+  /**
+   * Returns a given string converted to snakeCase
+   *
+   * @param {string} str - The string to convert
+   *
+   * @example
+   * str: ThisIsMyExample
+   * returns: this_is_my_example
+   * @example
+   * str: thisIsMyExample
+   * returns: this_is_my_example
+   */
+  public static toSnakeCase(str: string): string {
+    return this.convertToCaseLogic('SnakeCase', str);
+  }
+
+  private static convertToCaseLogic(toCase: CaseName, str: string): string {
+    const correspondantKnownCase = knownCases.find(
+      (caseInstance: Case) => caseInstance.name == toCase,
+    );
+
+    // do not apply any process overload for nothing
+    if (!StringUtils.isConsiderableCharSequence(str)) return str;
+
+    if (!str.includes(' ')) {
+      // str do not need blending operation
+      if (!this.determineCase(str)) return str;
+
+      return correspondantKnownCase.basicConversionReturnFn(
+        this.splitByCase(str),
+        str,
+      ); //Apply stored behavior of correspondantKnownCase and return the processed value
+    }
+
+    // str need blending operation
+
+    const removedBlankChars = StringUtils.removeBlankChars(str);
+    if (this.determineCase(removedBlankChars).name == toCase) {
+      //str is per any chance alraedy cased as wanted but needed to be cleanedFrom any blank chars
+      return removedBlankChars;
+    }
+
+    return correspondantKnownCase.blendedConversionReturnFn(
+      this.splitByCase(str),
+      StringUtils.blendIrrelevantStringsInRelevantOnes(str),
+      str,
+    ); //Apply stored behavior of correspondantKnownCase and return the processed value
   }
 }

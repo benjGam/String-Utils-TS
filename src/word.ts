@@ -130,7 +130,7 @@ export default class StringUtilsWord {
    * returns: Passes
    */
   public static pluralize(word: string): string {
-    if (word.trim().replaceAll(' ', '').length < 2 || this.isPlural(word))
+    if (!StringUtils.isConsiderableCharSequence(word) || this.isPlural(word))
       return word;
 
     const wordEnding = this.getCorrespondingEnding(word);
@@ -150,7 +150,7 @@ export default class StringUtilsWord {
    * returns: Pass
    */
   public static singularize(word: string): string {
-    if (word.trim().replaceAll(' ', '').length < 2 || this.isSingular(word))
+    if (!StringUtils.isConsiderableCharSequence(word) || this.isSingular(word))
       return word;
 
     const wordEnding = this.getCorrespondingEnding(word);
