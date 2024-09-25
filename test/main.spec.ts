@@ -14,10 +14,10 @@ runner.runBasicTests(
 );
 
 runner.runBasicTests(
-  new Map<any[][], string>([
-    [[['This', 2, 'hello']], 'Thhellos'],
-    [[['Hello', 18, 'hi']], 'Hello'],
-    [[['Hi', -2, 'hello']], 'Hi'],
+  new Map<any, string>([
+    [() => ['This', 2, 'hello'], 'Thhellos'],
+    [() => ['Hello', 18, 'hi'], 'Hello'],
+    [() => ['Hi', -2, 'hello'], 'Hi'],
   ]),
   StringUtils.replaceAt,
 );
