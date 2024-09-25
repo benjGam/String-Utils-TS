@@ -9,7 +9,7 @@ export default class JestRunner {
     this._classToInvoke = classToInvoke;
   }
 
-  public runBasicTests(expectedReturns: Map<any, any>, fn: Function): void {
+  public runBasicTests(fn: Function, expectedReturns: Map<any, any>): void {
     this.checkInvokation(fn);
 
     for (const [input, output] of expectedReturns.entries()) {
