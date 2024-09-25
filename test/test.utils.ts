@@ -13,7 +13,7 @@ export default class JestRunner {
     this.checkInvokation(fn);
 
     for (const [input, output] of expectedReturns.entries()) {
-      test(`[${fn.name}] Should return '${output}'`, () => {
+      test(`[${fn.name}] Should return '${output} for '${input}''`, () => {
         if (this.checkTypesLengthInInput(input)) {
           expect(fn.call(this._classToInvoke, ...input))[
             typeof output === 'object' ? 'toEqual' : 'toBe'
