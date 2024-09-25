@@ -18,27 +18,17 @@ export default class JestRunner {
 
     for (const [input, output] of expectedReturns.entries()) {
       test(`[${fn.name}] Should return '${output} for '${input}''`, () => {
-        if (inputPropertiesToTestName)
-          if (output) {
-            expect(
+        (inputPropertiesToTestName && output
+          ? expect(
               this._classToInvoke[fn.name](
                 ...(typeof input == 'function' ? input() : [input]),
               )[inputPropertiesToTestName],
-            )[typeof output === 'object' ? 'toEqual' : 'toBe'](output);
-          } else {
-            expect(
+            )
+          : expect(
               this._classToInvoke[fn.name](
                 ...(typeof input == 'function' ? input() : [input]),
               ),
-            )[typeof output === 'object' ? 'toEqual' : 'toBe'](output);
-          }
-        // if output is a complexe object use 'toEqual' otherwise 'toBe'
-        else
-          expect(
-            this._classToInvoke[fn.name](
-              ...(typeof input == 'function' ? input() : [input]),
-            ),
-          )[typeof output === 'object' ? 'toEqual' : 'toBe'](output); // if output is a complexe object use 'toEqual' otherwise 'toBe'
+            ))[typeof output === 'object' ? 'toEqual' : 'toBe'](output); // if output is a complexe object use 'toEqual' otherwise 'toBe'
       });
     }
   }
