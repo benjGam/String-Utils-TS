@@ -1,13 +1,11 @@
 name: Node.js CD
 
 on:
-  pull_request:
+  push:
     branches:
       - main
-    types: [closed]
 
 jobs:
-  if: github.event.pull_request.merged == true
   publish-npm:
     runs-on: ubuntu-latest
     steps:
