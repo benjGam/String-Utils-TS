@@ -1,5 +1,7 @@
 # Version 2.3.0
 
+- `Enhancement`:
+  - `Case convertion`: Previously algorithms responsible of converting a string to another case was obviously to light, so, the range of managed uses was too poor, i reworked those algorithms and they're now better from far that was they were. The new ones got tested and passes tests, it's more than sure that i didn't test all of cases, but an enhancement of this feature is truely brang to package.
 - `Added`:
   - `Case` abstract class is now used to reliably create case objects.
     - `CamelCase` class implement logic of previous correspondant object.
@@ -13,6 +15,16 @@
     - `containsOnlyConsiderableCharSequences(stringTable: string[]): boolean` method has been implemented and used to check if a given table of string contains only considerable (determined by `isConsiderableCharSequence` criterias) elements.
     - `removeBlankChars(str): string` method has been implemented and could be use to remove blank chars from a given string.
     - `blendIrrelevantStringsInRelevantOnes(str: string): string[]` method has been implemented and should be used to blend orphan chars (a char adjacent to blank chars) to the last considerable subsequence of char (determined by `isConsiderableCharSequence` criterias) in a given string.
+- `Removed`:
+  - `[BREAKING CHANGES]`:
+    - `Case` type has been renamed `CaseName` to avoid collision between new `Case` object type and previous `Case` type.
+    - `ICase` interface has been removed, it was useless to keep working with it.
+- `Refactor`:
+  - `[BREAKING CHANGES]`:
+    - `determineCase(str: string): ICase` method signature changed to `determineCase(str: string): Case`.
+  - `convertToCase(str: string, caseToConvert: Case): string` method signature moved to `convertToCase(str: string, caseToConvert: CaseName): string`.
+  - `knownCases` table is now a `:Case[]` instead of `:ICase[]`.
+  - Tests has been refactored to avoid rewriting loops again and again, they now use `JestRunner` utils class.
 
 # Version 2.2.0
 
