@@ -1,3 +1,13 @@
+# Version 2.3.0
+
+- `Added`:
+  - `Case` abstract class is now used to reliably create case objects.
+    - `CamelCase` class implement logic of previous correspondant object.
+    - `PascalCase` class implement logic of previous correspondant object.
+    - `SnakeCase` class implement logic of previous correspondant object.
+    - `LowerCase` class implement logic of previous correspondant object.
+    - `UpperCase` class implement logic of previous correspondant object.
+
 # Version 2.2.0
 
 - `Added`:
