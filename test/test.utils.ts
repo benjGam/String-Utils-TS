@@ -14,14 +14,11 @@ export default class JestRunner {
 
     for (const [input, output] of expectedReturns.entries()) {
       test(`[${fn.name}] Should return '${output} for '${input}''`, () => {
-        if (this.checkTypesLengthInInput(input)) {
-          expect(fn.call(this._classToInvoke, ...input))[
-            typeof output === 'object' ? 'toEqual' : 'toBe'
-          ](output); // if output is a complexe object use 'toEqual' otherwise 'toBe'
-        } else
-          expect(fn.call(this._classToInvoke, input))[
-            typeof output === 'object' ? 'toEqual' : 'toBe'
-          ](output); // if output is a complexe object use 'toEqual' otherwise 'toBe'
+        expect(
+          this._classToInvoke[fn.name](
+            ...(this.checkTypesLengthInInput(input) ? input : [input]),
+          ),
+        )[typeof output === 'object' ? 'toEqual' : 'toBe'](output); // if output is a complexe object use 'toEqual' otherwise 'toBe'
       });
     }
   }
