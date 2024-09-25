@@ -14,7 +14,7 @@ This package is a way to help third-party developers but also a way to help myse
 
 (I'm pretty sure that kind of module already exists and are better than mine, but, in any case, it will be usefull to me)
 
-## Features (2.0.0 version)
+## Features (2.1.0 version)
 
 ### StringUtilsWord class
 
@@ -33,7 +33,7 @@ This class is responsible to manage some operations on case of strings, we have 
 
 - `determineCase()`: This method could be useful if you want to know the case of a string (i.e: camelCase, snake_case, PascalCase, UPPERCASE, lowercase)
 - `splitByCase()`: This method could be useful if you want to split a string cased as a certain way, but you want each terms separated in a table.
-- `convertToCase()`: This method could be useful if you want to convert a string from a case to another one (Not implement yet)
+- `convertToCase()`: This method could be useful if you want to convert a string from a case to another one.
 
 ### StringUtils class
 

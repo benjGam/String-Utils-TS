@@ -130,7 +130,7 @@ export default class StringUtilsWord {
    * returns: Passes
    */
   public static pluralize(word: string): string {
-    if (word.trim().replaceAll(' ', '').length < 2 || this.isPlural(word))
+    if (!StringUtils.isConsiderableCharSequence(word) || this.isPlural(word))
       return word;
 
     const wordEnding = this.getCorrespondingEnding(word);
@@ -150,7 +150,7 @@ export default class StringUtilsWord {
    * returns: Pass
    */
   public static singularize(word: string): string {
-    if (word.trim().replaceAll(' ', '').length < 2 || this.isSingular(word))
+    if (!StringUtils.isConsiderableCharSequence(word) || this.isSingular(word))
       return word;
 
     const wordEnding = this.getCorrespondingEnding(word);
@@ -193,6 +193,31 @@ export default class StringUtilsWord {
     return str
       .split(' ')
       .filter((subsequence) => !StringUtils.isBlank(subsequence))
+      .join(' ');
+  }
+
+  /**
+   * Return a string with each words formated.
+   *
+   * @param {string | string[]} toFormat - The string or table of strings to format
+   *
+   * @example
+   * toFormat: 'Hello this is my example'
+   * returns: 'Hello This Is My Example'
+   *
+   * @example
+   * toFormat: ['Hello', 'this', 'is', 'my', 'example']
+   * returns: 'Hello This Is My Example'
+   */
+  public static formatWords(toFormat: string | string[]): string {
+    if (!Array.isArray(toFormat)) {
+      if (StringUtils.isBlank(toFormat)) return toFormat;
+      toFormat = toFormat.split(' ');
+    }
+    if (StringUtils.isBlank(toFormat.join(''))) return toFormat.join('');
+
+    return toFormat
+      .map((subSequence) => this.formatWord(subSequence))
       .join(' ');
   }
 }
