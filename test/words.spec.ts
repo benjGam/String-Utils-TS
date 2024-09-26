@@ -133,4 +133,14 @@ describe('Normalization of stuffs', () => {
       ['', 's'],
     ]),
   );
+
+  runner.runBasicTests(
+    StringUtilsWord.getSingularOf,
+    new Map<string, string>([
+      ['ies', 'y'],
+      ['sses', 'ss'],
+      ['es', 'e'],
+      ['s', ''],
+    ]),
+  );
 });
