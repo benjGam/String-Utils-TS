@@ -129,7 +129,7 @@ describe('Normalization of stuffs', () => {
     new Map<string, string>([
       ['y', 'ies'],
       ['ss', 'sses'],
-      ['es', 'e'],
+      ['e', 'es'],
       ['', 's'],
     ]),
   );
