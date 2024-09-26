@@ -123,4 +123,14 @@ describe('Normalization of stuffs', () => {
       [['This ', 'is ', 'my ', 'test'], 'This  Is  My  Test'],
     ]),
   );
+
+  runner.runBasicTests(
+    StringUtilsWord.getPluralOf,
+    new Map<string, string>([
+      ['y', 'ies'],
+      ['ss', 'sses'],
+      ['e', 'es'],
+      ['', 's'],
+    ]),
+  );
 });
