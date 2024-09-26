@@ -1,5 +1,5 @@
 import Case from './Case';
-import StringUtilsWord from '../word';
+import StringUtilsWord from '../word/utils';
 import { StringUtils } from '../main';
 
 export default class PascalCase extends Case {

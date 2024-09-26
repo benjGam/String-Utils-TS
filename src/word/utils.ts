@@ -1,4 +1,4 @@
-import { StringUtils } from './main';
+import { StringUtils } from '../main';
 
 /**
  * This interface provide a structure to register word endings forms

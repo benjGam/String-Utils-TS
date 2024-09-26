@@ -1,4 +1,4 @@
-import StringUtilsWord from './word';
+import StringUtilsWord from './word/utils';
 
 export class StringUtils {
   /**

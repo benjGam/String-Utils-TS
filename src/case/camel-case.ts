@@ -1,6 +1,6 @@
 import Case from './Case';
 import StringUtilsCase from './utils';
-import StringUtilsWord from '../word';
+import StringUtilsWord from '../word/utils';
 import { StringUtils } from '../main';
 
 export default class CamelCase extends Case {
