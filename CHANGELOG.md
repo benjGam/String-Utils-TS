@@ -49,7 +49,7 @@
 - Added:
   - Unit testing is now part of this project.
   - TSDoc has been adopted and is now part of this project.
-  - Code quality components is now part of this project (ESLint & Prettier)
+  - Code quality components are now part of this project (ESLint & Prettier)
 - Performance:
   - Code has been reworked to improve performance (**A performance measurer should be implemented in next realases**)
 
@@ -75,4 +75,4 @@
   - `isPlural();` - [FIX] Bring a fix to case where provided words ended with `ss`, there's no confusion, method now manage those cases.
   - `isSingular();`, `pluralize();`, `singularize();` - moved from `StringUtils` to `StringUtilsWord` class.
   - `formatWord();` - has been reworked and now use `StringUtils.replaceAt();` method to optimize process.
-  - `normalizeSpacesBetweenWords();` - to be be rework in next release.
+  - `normalizeSpacesBetweenWords();` - to be rework in next release.
