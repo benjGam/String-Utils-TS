@@ -1,4 +1,4 @@
-import StringUtilsCase, { CaseName } from '../src/case';
+import StringUtilsCase, { CaseName } from '../src/case/utils';
 import JestRunner from './test.utils';
 
 const runner = new JestRunner(StringUtilsCase);
