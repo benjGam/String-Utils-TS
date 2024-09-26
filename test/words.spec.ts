@@ -1,4 +1,5 @@
-import StringUtilsWord, { IWordEnding } from '../src/word/utils';
+import StringUtilsWord from '../src/word/utils';
+import { IWordEnding } from '../src/word/IWordEnding';
 import JestRunner from './test.utils';
 
 const runner = new JestRunner(StringUtilsWord);
