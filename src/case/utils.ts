@@ -1,10 +1,10 @@
-import CamelCase from './case/camel-case';
-import Case from './case/Case';
-import LowerCase from './case/lower-case';
-import PascalCase from './case/pascal-case';
-import SnakeCase from './case/snake-case';
-import UpperCase from './case/upper-case';
-import { StringUtils } from './main';
+import CamelCase from './camel-case';
+import Case from './Case';
+import LowerCase from './lower-case';
+import PascalCase from './pascal-case';
+import SnakeCase from './snake-case';
+import UpperCase from './upper-case';
+import { StringUtils } from '../main';
 
 /**
  * This type is used to ensure case selection is reliable

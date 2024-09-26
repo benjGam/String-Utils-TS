@@ -1,7 +1,12 @@
+# Version 2.3.1
+
+- `Fixes`:
+  - Export for cases component are now availables.
+
 # Version 2.3.0
 
 - `Enhancement`:
-  - `Case convertion`: Previously algorithms responsible of converting a string to another case was obviously to light, so, the range of managed uses was too poor, i reworked those algorithms and they're now better from far that was they were. The new ones got tested and passes tests, it's more than sure that i didn't test all of cases, but an enhancement of this feature is truely brang to package.
+  - `Case conversion`: Previously algorithms responsible of converting a string to another case was obviously to light, so, the range of managed uses was too poor, i reworked those algorithms and they're now better from far that was they were. The new ones got tested and passes tests, it's more than sure that i didn't test all of cases, but an enhancement of this feature is truely brang to package.
 - `Added`:
   - `Case` abstract class is now used to reliably create case objects.
     - `CamelCase` class implement logic of previous correspondant object.

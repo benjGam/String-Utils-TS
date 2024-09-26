@@ -1,5 +1,5 @@
 import Case from './Case';
-import StringUtilsCase from '../case';
+import StringUtilsCase from './utils';
 import StringUtilsWord from '../word';
 
 export default class SnakeCase extends Case {
