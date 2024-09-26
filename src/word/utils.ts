@@ -77,9 +77,9 @@ export default class StringUtilsWord {
   }
 
   /**
-   * Returns the plural form of a singular one.
+   * Returns the singular form of a plural one.
    *
-   * @param {string} str - Should be a singular form
+   * @param {string} str - Should be a plural form
    *
    * @example
    * str: 'ies'
