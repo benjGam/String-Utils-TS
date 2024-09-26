@@ -60,6 +60,23 @@ export default class StringUtilsWord {
   }
 
   /**
+   * Returns the plural form of a singular one.
+   *
+   * @param {string} str - Should be a singular form
+   *
+   * @example
+   * str: 'y'
+   * returns: 'ies'
+   *
+   * @example
+   * str: 'ss'
+   * returns: 'sses'
+   */
+  public static getPluralOf(str: string): string {
+    return this.getCorrespondingEnding(str).pluralForm;
+  }
+
+  /**
    * Check the ending form of a word and return a boolean
    *
    * @param {string} str - String to check if it's plural or not (should be a word)
