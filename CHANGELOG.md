@@ -1,3 +1,8 @@
+# Version 2.3.1
+
+- `Fixes`:
+  - Export for cases component are now availables.
+
 # Version 2.3.0
 
 - `Enhancement`:
