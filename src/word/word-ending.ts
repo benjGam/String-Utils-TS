@@ -10,14 +10,14 @@ export class WordEnding {
   /**
    * Returns the plural of stored singular form
    */
-  public get pluralOf(): string {
+  public get pluralForm(): string {
     return this._pluralForm;
   }
 
   /**
    * Returns the singular of stored plural form
    */
-  public get singularOf(): string {
+  public get singularForm(): string {
     return this._singularForm;
   }
 }

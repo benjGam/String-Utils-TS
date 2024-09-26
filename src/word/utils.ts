@@ -1,27 +1,15 @@
 import { StringUtils } from '../main';
-import { IWordEnding } from './IWordEnding';
+import { WordEnding } from './word-ending';
 
 /**
  * This object is used to list plural and singular forms
  * of words.
  */
-const wordEndings: IWordEnding[] = [
-  {
-    pluralForm: 'sses',
-    singularForm: 'ss',
-  },
-  {
-    pluralForm: 'ies',
-    singularForm: 'y',
-  },
-  {
-    pluralForm: 'es',
-    singularForm: 'e',
-  },
-  {
-    pluralForm: 's',
-    singularForm: '',
-  },
+const wordEndings: WordEnding[] = [
+  new WordEnding('sses', 'ss'),
+  new WordEnding('ies', 'y'),
+  new WordEnding('es', 'e'),
+  new WordEnding('s', ''),
 ];
 
 /**
@@ -64,7 +52,7 @@ export default class StringUtilsWord {
    * If you just want to do some word operation, prefer
    * @method getWordEnding
    */
-  public static getCorrespondingEnding(word: string): IWordEnding {
+  public static getCorrespondingEnding(word: string): WordEnding {
     return wordEndings.find(
       (ending) =>
         word.endsWith(ending.pluralForm) || word.endsWith(ending.singularForm),
