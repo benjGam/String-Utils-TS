@@ -1,3 +1,11 @@
+# Version 2.4.0
+
+- `Added`:
+  - `WordEnding` class has been implemented to replace `IWordEnding` interface.
+  - `getPluralOf(str: string): string`, `getSingularOf(str: string): string` methods has been implemented to get respectively `plural` & `singular` form of a given one.
+- `Removed` [BREAKING CHANGES]:
+  - `IWordEnding` interface has been removed.
+
 # Version 2.3.1
 
 - `Fixes`:
