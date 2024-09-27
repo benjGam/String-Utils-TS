@@ -1,3 +1,8 @@
+# Version 2.4.1
+
+- `Patch`:
+  - Remove useless files from package (When `npm publish` is performed)
+
 # Version 2.4.0
 
 - `Added`:
