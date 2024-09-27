@@ -1,4 +1,5 @@
-import StringUtilsWord, { IWordEnding } from '../src/word';
+import StringUtilsWord from '../src/word/utils';
+import { WordEnding } from '../src/word/word-ending';
 import JestRunner from './test.utils';
 
 const runner = new JestRunner(StringUtilsWord);
@@ -20,63 +21,15 @@ describe('Get word ending', () => {
 
   runner.runBasicTests(
     StringUtilsWord.getCorrespondingEnding,
-    new Map<string, IWordEnding>([
-      [
-        'Passes',
-        {
-          pluralForm: 'sses',
-          singularForm: 'ss',
-        },
-      ],
-      [
-        'Pass',
-        {
-          pluralForm: 'sses',
-          singularForm: 'ss',
-        },
-      ],
-      [
-        'Categories',
-        {
-          pluralForm: 'ies',
-          singularForm: 'y',
-        },
-      ],
-      [
-        'Category',
-        {
-          pluralForm: 'ies',
-          singularForm: 'y',
-        },
-      ],
-      [
-        'Bees',
-        {
-          pluralForm: 'es',
-          singularForm: 'e',
-        },
-      ],
-      [
-        'Bee',
-        {
-          pluralForm: 'es',
-          singularForm: 'e',
-        },
-      ],
-      [
-        'Cars',
-        {
-          pluralForm: 's',
-          singularForm: '',
-        },
-      ],
-      [
-        'Car',
-        {
-          pluralForm: 's',
-          singularForm: '',
-        },
-      ],
+    new Map<string, WordEnding>([
+      ['Passes', new WordEnding('sses', 'ss')],
+      ['Pass', new WordEnding('sses', 'ss')],
+      ['Categories', new WordEnding('ies', 'y')],
+      ['Category', new WordEnding('ies', 'y')],
+      ['Bees', new WordEnding('es', 'e')],
+      ['Bee', new WordEnding('es', 'e')],
+      ['Cars', new WordEnding('s', '')],
+      ['Car', new WordEnding('s', '')],
     ]),
   );
 });
@@ -168,6 +121,26 @@ describe('Normalization of stuffs', () => {
       [['        ', ''], '        '],
       ['      ', '      '],
       [['This ', 'is ', 'my ', 'test'], 'This  Is  My  Test'],
+    ]),
+  );
+
+  runner.runBasicTests(
+    StringUtilsWord.getPluralOf,
+    new Map<string, string>([
+      ['y', 'ies'],
+      ['ss', 'sses'],
+      ['e', 'es'],
+      ['', 's'],
+    ]),
+  );
+
+  runner.runBasicTests(
+    StringUtilsWord.getSingularOf,
+    new Map<string, string>([
+      ['ies', 'y'],
+      ['sses', 'ss'],
+      ['es', 'e'],
+      ['s', ''],
     ]),
   );
 });

@@ -1,6 +1,6 @@
 import Case from './Case';
 import StringUtilsCase from './utils';
-import StringUtilsWord from '../word';
+import StringUtilsWord from '../word/utils';
 
 export default class SnakeCase extends Case {
   protected _matcher = /(\w+)_(\w+)/;

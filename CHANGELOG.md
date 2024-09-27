@@ -1,7 +1,15 @@
+# Version 2.4.0
+
+- `Added`:
+  - `WordEnding` class has been implemented to replace `IWordEnding` interface.
+  - `getPluralOf(str: string): string`, `getSingularOf(str: string): string` methods has been implemented to get respectively `plural` & `singular` form of a given one.
+- `Removed` [BREAKING CHANGES]:
+  - `IWordEnding` interface has been removed.
+
 # Version 2.3.1
 
 - `Fixes`:
-  - Export for cases component are now availables.
+  - Exports for cases component are now availables.
 
 # Version 2.3.0
 
@@ -49,7 +57,7 @@
 - Added:
   - Unit testing is now part of this project.
   - TSDoc has been adopted and is now part of this project.
-  - Code quality components is now part of this project (ESLint & Prettier)
+  - Code quality components are now part of this project (ESLint & Prettier)
 - Performance:
   - Code has been reworked to improve performance (**A performance measurer should be implemented in next realases**)
 
@@ -75,4 +83,4 @@
   - `isPlural();` - [FIX] Bring a fix to case where provided words ended with `ss`, there's no confusion, method now manage those cases.
   - `isSingular();`, `pluralize();`, `singularize();` - moved from `StringUtils` to `StringUtilsWord` class.
   - `formatWord();` - has been reworked and now use `StringUtils.replaceAt();` method to optimize process.
-  - `normalizeSpacesBetweenWords();` - to be be rework in next release.
+  - `normalizeSpacesBetweenWords();` - to be rework in next release.

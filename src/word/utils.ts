@@ -1,42 +1,15 @@
-import { StringUtils } from './main';
-
-/**
- * This interface provide a structure to register word endings forms
- *
- * @interface IWordEnding
- * @field {string} pluralForm is used to store a plural form of ending
- * @field {string} singularForm is used to store the singular form of the plural form ending
- *
- * @example
- * pluralForm: 'ies'
- * singularForm: 'y'
- */
-export interface IWordEnding {
-  pluralForm: string;
-  singularForm: string;
-}
+import { StringUtils } from '../main';
+import { WordEnding } from './word-ending';
 
 /**
  * This object is used to list plural and singular forms
  * of words.
  */
-const wordEndings: IWordEnding[] = [
-  {
-    pluralForm: 'sses',
-    singularForm: 'ss',
-  },
-  {
-    pluralForm: 'ies',
-    singularForm: 'y',
-  },
-  {
-    pluralForm: 'es',
-    singularForm: 'e',
-  },
-  {
-    pluralForm: 's',
-    singularForm: '',
-  },
+const wordEndings: WordEnding[] = [
+  new WordEnding('sses', 'ss'),
+  new WordEnding('ies', 'y'),
+  new WordEnding('es', 'e'),
+  new WordEnding('s', ''),
 ];
 
 /**
@@ -79,11 +52,45 @@ export default class StringUtilsWord {
    * If you just want to do some word operation, prefer
    * @method getWordEnding
    */
-  public static getCorrespondingEnding(word: string): IWordEnding {
+  public static getCorrespondingEnding(word: string): WordEnding {
     return wordEndings.find(
       (ending) =>
         word.endsWith(ending.pluralForm) || word.endsWith(ending.singularForm),
     );
+  }
+
+  /**
+   * Returns the plural form of a singular one.
+   *
+   * @param {string} str - Should be a singular form
+   *
+   * @example
+   * str: 'y'
+   * returns: 'ies'
+   *
+   * @example
+   * str: 'ss'
+   * returns: 'sses'
+   */
+  public static getPluralOf(str: string): string {
+    return this.getCorrespondingEnding(str).pluralForm;
+  }
+
+  /**
+   * Returns the singular form of a plural one.
+   *
+   * @param {string} str - Should be a plural form
+   *
+   * @example
+   * str: 'ies'
+   * returns: 'y'
+   *
+   * @example
+   * str: 'sses'
+   * returns: 'ss'
+   */
+  public static getSingularOf(str: string): string {
+    return this.getCorrespondingEnding(str).singularForm;
   }
 
   /**
