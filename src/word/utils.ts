@@ -227,4 +227,28 @@ export default class StringUtilsWord {
       .map((subSequence) => this.formatWord(subSequence))
       .join(' ');
   }
+
+  /**
+   *
+   * Returns a dot at end of sentence & first word char uppered.
+   *
+   * @param sentence - A sentence in a string
+   *
+   * @example
+   * sentence: '        this is a     sentence'
+   * returns: 'This is a sentence.'
+   */
+  public static normalizeSentence(sentence: string): string {
+    const firstCharIndex = StringUtils.getFirstCharIndex(sentence);
+    if (firstCharIndex == -1)
+      // There's no char in given string
+      return sentence;
+    sentence = this.normalizeSpacesBetweenWords(
+      sentence.substring(firstCharIndex, sentence.length),
+    );
+    const arrayOfSentence = sentence.split('');
+    sentence = sentence.toLowerCase();
+    arrayOfSentence[0] = arrayOfSentence[0].toUpperCase();
+    return `${arrayOfSentence.join('')}.`;
+  }
 }
