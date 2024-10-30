@@ -17,7 +17,7 @@ export default class JestRunner {
     this.checkInvokation(fn);
 
     for (const [input, output] of expectedReturns.entries()) {
-      test(`[${fn.name}] Should return '${output} for '${input}''`, () => {
+      test(`[${fn.name}] Should return '${output}' for '${input}''`, () => {
         (inputPropertiesToTestName && output
           ? expect(
               this._classToInvoke[fn.name](
