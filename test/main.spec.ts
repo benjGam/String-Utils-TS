@@ -98,11 +98,11 @@ runner.runBasicTests(
 
 runner.runBasicTests(
   StringUtils.getFirstIndexOfUnfullyDeterminated,
-  new Map<[string, string], number>([
-    [['test', 'te'], 0],
-    [['', ''], -1],
-    [['hello', 'o'], 4],
-    [['hey ', ' '], 3],
-    [['bouh', 'hello'], 2],
+  new Map<any, number>([
+    [() => ['test', 'te'], 0],
+    [() => ['', ''], -1],
+    [() => ['hello', 'o'], 4],
+    [() => ['hey ', ' '], 3],
+    [() => ['bouh', 'hello'], 1],
   ]),
 );
