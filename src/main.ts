@@ -188,4 +188,15 @@ export class StringUtils {
     const toSearch = '?!;.';
     return string.split('').findIndex((char) => toSearch.includes(char));
   }
+
+  /**
+   * Returns first index of a given set of char in a given string
+   *
+   */
+  public static getFirstIndexOfUnfullyDeterminated(
+    string: string,
+    toSearch: string | string[],
+  ): number {
+    return string.split('').findIndex((char) => toSearch.includes(char));
+  }
 }
