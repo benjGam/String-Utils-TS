@@ -169,7 +169,6 @@ export class StringUtils {
    *
    * @param string - The string to search in
    */
-
   public static getFirstCharIndex(string: string) {
     const alphabet = 'abcdefghijklmnopqrstuvwxyz';
     string = string.toLowerCase();
@@ -178,5 +177,16 @@ export class StringUtils {
       if (alphabet.includes(string[charIndex])) return +charIndex;
     }
     return -1;
+  }
+
+  /**
+   * Returns the index of the ending punctuation char
+   *
+   * @param string - The sting to search in
+   *
+   */
+  public static getFirstEndingPunctuationChar(string: string) {
+    const toSearch = '?!;.';
+    return string.split('').findIndex((char) => toSearch.includes(char));
   }
 }
