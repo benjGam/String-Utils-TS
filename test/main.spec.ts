@@ -83,7 +83,7 @@ runner.runBasicTests(
 );
 
 runner.runBasicTests(
-  StringUtils.getFirstEndingPunctuationChar,
+  StringUtils.getFirstEndingPunctuationIndex,
   new Map<string, number>([
     ['!', 0],
     ['This', -1],

@@ -249,6 +249,6 @@ export default class StringUtilsWord {
     const arrayOfSentence = sentence.split('');
     sentence = sentence.toLowerCase();
     arrayOfSentence[0] = arrayOfSentence[0].toUpperCase();
-    return `${arrayOfSentence.join('')}${StringUtils.getFirstEndingPunctuationChar(sentence) == sentence.length - 1 ? '' : '.'}`;
+    return `${arrayOfSentence.join('')}${StringUtils.getFirstEndingPunctuationIndex(sentence) == sentence.length - 1 ? '' : '.'}`;
   }
 }

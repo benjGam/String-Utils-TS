@@ -177,12 +177,12 @@ export class StringUtils {
   }
 
   /**
-   * Returns the index of the ending punctuation char
+   * Returns the index of the ending punctuation char index
    *
    * @param string - The string to search in
    *
    */
-  public static getFirstEndingPunctuationChar(string: string) {
+  public static getFirstEndingPunctuationIndex(string: string) {
     return this.getFirstIndexOfUnfullyDeterminated(string, '?!;.');
   }
 
