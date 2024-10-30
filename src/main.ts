@@ -89,7 +89,7 @@ export class StringUtils {
    * str: 'Test'
    * index: '2'
    * toReplaceWith: 'hello'
-   * returns: 'Tehellost'
+   * returns: 'Tehellot'
    */
   public static replaceAt(
     str: string,
@@ -161,5 +161,39 @@ export class StringUtils {
     });
 
     return revelantSubSequences;
+  }
+
+  /**
+   * Returns the index of the first char
+   *
+   *
+   * @param string - The string to search in
+   */
+  public static getFirstCharIndex(string: string) {
+    return this.getFirstIndexOfUnfullyDeterminated(
+      string.toLowerCase(),
+      'abcdefghijklmnopqrstuvwxyz',
+    );
+  }
+
+  /**
+   * Returns the index of the ending punctuation char index
+   *
+   * @param string - The string to search in
+   *
+   */
+  public static getFirstEndingPunctuationIndex(string: string) {
+    return this.getFirstIndexOfUnfullyDeterminated(string, '?!;.');
+  }
+
+  /**
+   * Returns first index of a given set of char in a given string
+   *
+   */
+  public static getFirstIndexOfUnfullyDeterminated(
+    string: string,
+    toSearch: string | string[],
+  ): number {
+    return string.split('').findIndex((char) => toSearch.includes(char));
   }
 }

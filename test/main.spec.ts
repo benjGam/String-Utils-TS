@@ -71,3 +71,38 @@ runner.runBasicTests(
     ['    '.split(' '), false],
   ]),
 );
+
+runner.runBasicTests(
+  StringUtils.getFirstCharIndex,
+  new Map<string, number>([
+    ['   this is a sentence', 3],
+    ['this is a sentence', 0],
+    ['!!this', 2],
+    ['!!!', -1],
+  ]),
+);
+
+runner.runBasicTests(
+  StringUtils.getFirstEndingPunctuationIndex,
+  new Map<string, number>([
+    ['!', 0],
+    ['This', -1],
+    ['This ?', 5],
+    ['This !', 5],
+    ['This.', 4],
+    ['!This', 0],
+    ['This;', 4],
+    ['', -1],
+  ]),
+);
+
+runner.runBasicTests(
+  StringUtils.getFirstIndexOfUnfullyDeterminated,
+  new Map<any, number>([
+    [() => ['test', 'te'], 0],
+    [() => ['', ''], -1],
+    [() => ['hello', 'o'], 4],
+    [() => ['hey ', ' '], 3],
+    [() => ['bouh', 'hello'], 1],
+  ]),
+);
