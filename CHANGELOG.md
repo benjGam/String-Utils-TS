@@ -1,3 +1,9 @@
+# Version 2.5.0 [ON-GOING]
+
+- `Added`:
+  - `getFirstCharIndex(string: string): number` method has been implemented.
+  - `normalizeSentence(sentence: string): string` method has been implemented, this method is used to upper the first word char & lower the rest of them & append a dot at the end of it.
+
 # Version 2.4.1
 
 - `Patch`:
