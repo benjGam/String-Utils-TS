@@ -154,6 +154,7 @@ describe('Normalization of stuffs', () => {
       ['        This is a story.', 'This is a story.'],
       ['This is a story !', 'This is a story !'],
       ['Is this a story ?', 'Is this a story ?'],
+      ['Is this a story ? No', 'Is this a story ? No.'],
     ]),
   );
 });
