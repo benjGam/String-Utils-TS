@@ -89,7 +89,7 @@ export class StringUtils {
    * str: 'Test'
    * index: '2'
    * toReplaceWith: 'hello'
-   * returns: 'Tehellost'
+   * returns: 'Tehellot'
    */
   public static replaceAt(
     str: string,
@@ -161,5 +161,22 @@ export class StringUtils {
     });
 
     return revelantSubSequences;
+  }
+
+  /**
+   * Returns the index of the first char
+   *
+   *
+   * @param string - The string to search in
+   */
+
+  public static getFirstCharIndex(string: string) {
+    const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+    string = string.toLowerCase();
+
+    for (const charIndex in string.split('')) {
+      if (alphabet.includes(string[charIndex])) return +charIndex;
+    }
+    return -1;
   }
 }

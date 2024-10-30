@@ -143,4 +143,14 @@ describe('Normalization of stuffs', () => {
       ['s', ''],
     ]),
   );
+
+  runner.runBasicTests(
+    StringUtilsWord.normalizeSentence,
+    new Map<string, string>([
+      ['        this is a     sentence', 'This is a sentence.'],
+      ['           ', '           '],
+      ['         !!!!!! hello you', 'Hello you.'],
+      ['      a !!!! story', 'A !!!! story.'],
+    ]),
+  );
 });

@@ -71,3 +71,13 @@ runner.runBasicTests(
     ['    '.split(' '), false],
   ]),
 );
+
+runner.runBasicTests(
+  StringUtils.getFirstCharIndex,
+  new Map<string, number>([
+    ['   this is a sentence', 3],
+    ['this is a sentence', 0],
+    ['!!this', 2],
+    ['!!!', -1],
+  ]),
+);
