@@ -181,7 +181,7 @@ export class StringUtils {
   /**
    * Returns the index of the ending punctuation char
    *
-   * @param string - The sting to search in
+   * @param string - The string to search in
    *
    */
   public static getFirstEndingPunctuationChar(string: string) {
