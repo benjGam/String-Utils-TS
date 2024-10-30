@@ -81,3 +81,17 @@ runner.runBasicTests(
     ['!!!', -1],
   ]),
 );
+
+runner.runBasicTests(
+  StringUtils.getFirstEndingPunctuationChar,
+  new Map<string, number>([
+    ['!', 0],
+    ['This', -1],
+    ['This ?', 5],
+    ['This !', 5],
+    ['This.', 4],
+    ['!This', 0],
+    ['This;', 4],
+    ['', -1],
+  ]),
+);
