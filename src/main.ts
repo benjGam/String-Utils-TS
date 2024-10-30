@@ -89,7 +89,7 @@ export class StringUtils {
    * str: 'Test'
    * index: '2'
    * toReplaceWith: 'hello'
-   * returns: 'Tehellost'
+   * returns: 'Tehellot'
    */
   public static replaceAt(
     str: string,
