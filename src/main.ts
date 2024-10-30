@@ -170,13 +170,12 @@ export class StringUtils {
    * @param string - The string to search in
    */
   public static getFirstCharIndex(string: string) {
-    const alphabet = 'abcdefghijklmnopqrstuvwxyz';
-    string = string.toLowerCase();
+    const toSearch = 'abcdefghijklmnopqrstuvwxyz';
 
-    for (const charIndex in string.split('')) {
-      if (alphabet.includes(string[charIndex])) return +charIndex;
-    }
-    return -1;
+    return string
+      .toLowerCase()
+      .split('')
+      .findIndex((char) => toSearch.includes(char));
   }
 
   /**
