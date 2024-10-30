@@ -170,12 +170,10 @@ export class StringUtils {
    * @param string - The string to search in
    */
   public static getFirstCharIndex(string: string) {
-    const toSearch = 'abcdefghijklmnopqrstuvwxyz';
-
-    return string
-      .toLowerCase()
-      .split('')
-      .findIndex((char) => toSearch.includes(char));
+    return this.getFirstIndexOfUnfullyDeterminated(
+      string.toLowerCase(),
+      'abcdefghijklmnopqrstuvwxyz',
+    );
   }
 
   /**
@@ -185,8 +183,7 @@ export class StringUtils {
    *
    */
   public static getFirstEndingPunctuationChar(string: string) {
-    const toSearch = '?!;.';
-    return string.split('').findIndex((char) => toSearch.includes(char));
+    return this.getFirstIndexOfUnfullyDeterminated(string, '?!;.');
   }
 
   /**
