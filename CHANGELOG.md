@@ -3,6 +3,8 @@
 - `Added`:
   - `getFirstCharIndex(string: string): number` method has been implemented.
   - `normalizeSentence(sentence: string): string` method has been implemented, this method is used to upper the first word char & lower the rest of them & append a dot at the end of it.
+  - `getPunctuationCharIndex(string: string): number` method has been implemented.
+  - `getIndexOfUnfullyDeterminated(string: string, toSearch: string | string[]): number` method has been implement to get the first index of a given set of (only one) char in a given string.
 
 # Version 2.4.1
 
