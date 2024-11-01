@@ -5,3 +5,7 @@ src/**/*
 coverage/
 test/
 tsconfig.json
+.eslintrc.js
+.perttierrc
+CHANGELOG.md
+jest.config.js
