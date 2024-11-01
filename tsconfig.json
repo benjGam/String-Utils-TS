@@ -8,15 +8,20 @@
     "allowSyntheticDefaultImports": true,
     "target": "ES2021",
     "sourceMap": true,
-    "outDir": "./lib",
-    "baseUrl": "./",
+    "outDir": "./lib/",
+    "baseUrl": "./src",
     "incremental": true,
     "skipLibCheck": true,
     "strictNullChecks": false,
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "string-utils-ts/case": ["./case/"],
+      "string-utils-ts/word": ["./word/"]
+    }
   },
+  "include": ["src/**/*"],
   "exclude": ["test/**/*.spec.ts"]
 }
