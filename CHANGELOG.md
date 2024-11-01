@@ -1,4 +1,9 @@
-# Version 2.5.0 [ON-GOING]
+# Version 2.5.4
+
+- `Patch`:
+  - Paths are patched.
+
+# Version 2.5.0
 
 - `Added`:
   - `getFirstCharIndex(string: string): number` method has been implemented.
